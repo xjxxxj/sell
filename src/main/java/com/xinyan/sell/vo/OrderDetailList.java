@@ -3,7 +3,7 @@ package com.xinyan.sell.vo;
 import lombok.Data;
 
 
-import java.math.BigInteger;
+import java.math.BigDecimal;
 
 @Data
 public class OrderDetailList {
@@ -11,7 +11,7 @@ public class OrderDetailList {
     private String orderId;
     private Integer productId;
     private String productName;
-    private BigInteger productPrice;
+    private BigDecimal productPrice;
     private Integer productQuantity;
     private String productIcon;
     private String productImage;
