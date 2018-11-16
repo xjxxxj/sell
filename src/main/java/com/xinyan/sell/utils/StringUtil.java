@@ -8,6 +8,13 @@ package com.xinyan.sell.utils;
  **/
 public class StringUtil {
 
+    /**
+     * @Description: 判断对个对象是否存在空对象
+     * @Return boolean 任意对象为空返回false
+     * @Author: 谢庆香
+     * @Date: 2018\11\16 0016
+     * @Time: 17:06
+     */
     public boolean isNotNull(Object ... objects){
         if(objects != null && objects.length > 0){
             for(int i = 0 ; i < objects.length ; i ++){
@@ -15,10 +22,9 @@ public class StringUtil {
                     return false ;
                 }
             }
-        }else {
-            return false ;
+            return true ;
         }
-        return true ;
+        return false ;
     }
 
 }
