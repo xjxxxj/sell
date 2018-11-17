@@ -17,14 +17,20 @@ public class ProductVo {
     //传入ProductInfoVo对象
     private ProductInfoVo foods ;
 
-   
+    public ProductVo() {
+    }
+
+    public ProductVo(ProductCategoryVo category, ProductInfoVo foods) {
+        this.category = category;
+        this.foods = foods;
+    }
+
     public String getName(){
        return this.category.getName() ;
     }
     public Integer getType(){
         return this.category.getType() ;
     }
-
 
     public void setCategory(ProductCategoryVo category) {
         this.category = category;

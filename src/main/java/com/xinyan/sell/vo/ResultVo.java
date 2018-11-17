@@ -4,7 +4,7 @@ import java.io.Serializable;
 
 /**
 
-* @Description:    ResultVo  封装后返回给前端的Json数据对象
+* @Description:    ResultVo  统一封装Json数据返回格式
 * @Author:         Hp
 * @CreateDate:     17/11/2018 14:33
 * @UpdateUser:     Hp

@@ -71,7 +71,7 @@ public class OrderMainListVo implements Serializable {
     /**
      *订单商品详情信息表
      */
-    private OrderDetailListVo orderDetailListVo;
+    private OrderDetailListVo orderDetailList;
 
     public OrderMainListVo() {
     }
@@ -80,7 +80,7 @@ public class OrderMainListVo implements Serializable {
         this.orderId = orderId;
     }
 
-    public OrderMainListVo(String orderId, String buyerName, String buyerPhone, String buyerAddress, String buyerOpenid, Integer orderAmount, OrderStatus orderStatus, PayStatus payStatus, Long createTime, Long updateTime, OrderDetailListVo orderDetailListVo) {
+    public OrderMainListVo(String orderId, String buyerName, String buyerPhone, String buyerAddress, String buyerOpenid, Integer orderAmount, OrderStatus orderStatus, PayStatus payStatus, Long createTime, Long updateTime, OrderDetailListVo orderDetailList) {
         this.orderId = orderId;
         this.buyerName = buyerName;
         this.buyerPhone = buyerPhone;
@@ -91,7 +91,7 @@ public class OrderMainListVo implements Serializable {
         this.payStatus = payStatus;
         this.createTime = createTime;
         this.updateTime = updateTime;
-        this.orderDetailListVo = orderDetailListVo;
+        this.orderDetailList = orderDetailList;
     }
 
     public String getOrderId() {
@@ -142,16 +142,16 @@ public class OrderMainListVo implements Serializable {
         this.orderAmount = orderAmount;
     }
 
-    public OrderStatus getOrderStatus() {
-        return orderStatus;
+    public Integer getOrderStatus() {
+        return orderStatus.getCode();
     }
 
     public void setOrderStatus(OrderStatus orderStatus) {
         this.orderStatus = orderStatus;
     }
 
-    public PayStatus getPayStatus() {
-        return payStatus;
+    public Integer getPayStatus() {
+        return payStatus.getCode();
     }
 
     public void setPayStatus(PayStatus payStatus) {
@@ -174,12 +174,12 @@ public class OrderMainListVo implements Serializable {
         this.updateTime = updateTime;
     }
 
-    public OrderDetailListVo getOrderDetailListVo() {
-        return orderDetailListVo;
+    public OrderDetailListVo getOrderDetailList() {
+        return orderDetailList;
     }
 
-    public void setOrderDetailListVo(OrderDetailListVo orderDetailListVo) {
-        this.orderDetailListVo = orderDetailListVo;
+    public void setOrderDetailList(OrderDetailListVo orderDetailListVo) {
+        this.orderDetailList = orderDetailListVo;
     }
 
     @Override
@@ -195,7 +195,7 @@ public class OrderMainListVo implements Serializable {
                 ", payStatus=" + payStatus +
                 ", createTime=" + createTime +
                 ", updateTime=" + updateTime +
-                ", orderDetailListVo=" + orderDetailListVo +
+                ", orderDetailList=" + orderDetailList +
                 '}';
     }
 }

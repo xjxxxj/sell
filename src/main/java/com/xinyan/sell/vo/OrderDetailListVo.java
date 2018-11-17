@@ -3,7 +3,7 @@ package com.xinyan.sell.vo;
 import java.io.Serializable;
 
 /**
-* @Description:    OrderDetailList类  订单商品详情信息表
+* @Description:    OrderDetailList类  订单商品详情信息列表
 * @Author:         Hp
 * @CreateDate:     16/11/2018 16:44
 * @UpdateUser:     Hp
@@ -28,7 +28,7 @@ public class OrderDetailListVo implements Serializable {
     /**
      * 订单商品Id
      */
-    private Integer productId;
+    private String  productId;
     /**
      * 订单商品名称
      */
@@ -37,7 +37,7 @@ public class OrderDetailListVo implements Serializable {
      * 订单商品单价
      * Attention：和金钱交易有关的使用BigDecimal
      */
-    private Integer productPrice;
+    private Double productPrice;
     /**
      * 订单商品数量
      */
@@ -51,7 +51,7 @@ public class OrderDetailListVo implements Serializable {
      */
     private String productImage;
 
-    public OrderDetailListVo(String detailId, String orderId, Integer productId, String productName, Integer productPrice, Integer productQuantity, String productIcon, String productImage) {
+    public OrderDetailListVo(String detailId, String orderId, String productId, String productName, Double productPrice, Integer productQuantity, String productIcon, String productImage) {
         this.detailId = detailId;
         this.orderId = orderId;
         this.productId = productId;
@@ -78,11 +78,11 @@ public class OrderDetailListVo implements Serializable {
         this.orderId = orderId;
     }
 
-    public Integer getProductId() {
+    public String getProductId() {
         return productId;
     }
 
-    public void setProductId(Integer productId) {
+    public void setProductId(String productId) {
         this.productId = productId;
     }
 
@@ -94,11 +94,11 @@ public class OrderDetailListVo implements Serializable {
         this.productName = productName;
     }
 
-    public Integer getProductPrice() {
+    public Double getProductPrice() {
         return productPrice;
     }
 
-    public void setProductPrice(Integer productPrice) {
+    public void setProductPrice(Double productPrice) {
         this.productPrice = productPrice;
     }
 
