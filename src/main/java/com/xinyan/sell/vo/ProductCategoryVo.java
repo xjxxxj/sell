@@ -13,8 +13,7 @@ import java.io.Serializable;
 * @UpdateRemark:
 * @Version:
 */
-@Data
-public class ProductCategory implements Serializable {
+public class ProductCategoryVo implements Serializable {
     /**
      * 实现Serializable，获取serialVersionUID，缓存ProductCategory对象信息
      */
@@ -28,4 +27,23 @@ public class ProductCategory implements Serializable {
      */
     private Integer type;
 
+    public static long getSerialVersionUID() {
+        return serialVersionUID;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public Integer getType() {
+        return type;
+    }
+
+    public void setType(Integer type) {
+        this.type = type;
+    }
 }

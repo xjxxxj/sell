@@ -12,7 +12,7 @@ import java.io.Serializable;
 * @UpdateRemark:
 * @Version:
 */
-@Getter
+
 public enum OrderStatus implements Serializable {
 
     SUCCESS(0,"成功"),
@@ -28,6 +28,22 @@ public enum OrderStatus implements Serializable {
 
     OrderStatus(Integer code, String msg) {
         this.code = code;
+        this.msg = msg;
+    }
+
+    public Integer getCode() {
+        return code;
+    }
+
+    public String getMsg() {
+        return msg;
+    }
+
+    public void setCode(Integer code) {
+        this.code = code;
+    }
+
+    public void setMsg(String msg) {
         this.msg = msg;
     }
 }
