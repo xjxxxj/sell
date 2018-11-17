@@ -57,7 +57,7 @@
             <artifactId>lombok</artifactId>
             <optional>true</optional>
         </dependency>
-        <!-- h2数据哭，内存数据库，供开发过程使用 -->
+        <!-- h2数据库，内存数据库，供开发过程使用 -->
         <dependency>
             <groupId>com.h2database</groupId>
             <artifactId>h2</artifactId>
