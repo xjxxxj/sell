@@ -21,7 +21,7 @@ public interface ProductService {
     * description  根据商品Id查询商品信息
     * @author      Hp
     * @param productId
-    * @return      ProductInfo
+    * @return      ProductInfoVo
     * @exception
     * @date        19/11/2018 14:47
     */
@@ -30,7 +30,7 @@ public interface ProductService {
     * @description 查询所有商品信息
     * @author      Hp
     * @param
-    * @return     List<ProductInfo>
+    * @return     List<ProductInfoVo>
     * @exception
     * @date        19/11/2018 14:49
     */
@@ -39,7 +39,7 @@ public interface ProductService {
     * @description  分页查询所有商品信息
     * @author      Hp
     * @param       pageable
-    * @return      Page<ProductInfo>
+    * @return      Page<ProductInfoVo>
     * @exception
     * @date        19/11/2018 14:50
     */
@@ -48,7 +48,7 @@ public interface ProductService {
     * @description  新增商品信息
     * @author      Hp
     * @param       productInfo
-    * @return      ProductInfo
+    * @return      ProductInfoVo
     * @exception
     * @date        19/11/2018 14:53
     */

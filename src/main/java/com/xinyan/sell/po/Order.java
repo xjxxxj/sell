@@ -5,12 +5,13 @@ import com.xinyan.sell.enums.PayStatus;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import java.io.Serializable;
 import java.util.Date;
 import java.util.List;
 
 /**
 
-* @Description:    OrderMain 主订单列表对象
+* @Description:    OrderMain 订单对象
 * @Author:         Hp
 * @CreateDate:     17/11/2018 18:35
 * @UpdateUser:     Hp
@@ -19,7 +20,8 @@ import java.util.List;
 * @Version:
 */
 @Entity(name = "tb_order")
-public class Order {
+public class Order implements Serializable {
+    private static final long serialVersionUID = 4062850551827287900L;
     /**订单Id*/
     @Id
     private String orderId;
@@ -33,12 +35,52 @@ public class Order {
     private Date createTime;
     /**订单修改时间*/
     private Date updateTime;
+    /**买家id*/
+    private String buyerOpenId ;
+    /**买家名字*/
+    private String buyername ;
+    /**买家电话*/
+    private String buyerPhone ;
+    /**买家地址*/
+    private String buyerAddress ;
 
     public Order() {
     }
 
     public int getPayStatus() {
         return payStatus;
+    }
+
+    public String getBuyerOpenId() {
+        return buyerOpenId;
+    }
+
+    public void setBuyerOpenId(String buyerOpenId) {
+        this.buyerOpenId = buyerOpenId;
+    }
+
+    public String getBuyername() {
+        return buyername;
+    }
+
+    public void setBuyername(String buyername) {
+        this.buyername = buyername;
+    }
+
+    public String getBuyerPhone() {
+        return buyerPhone;
+    }
+
+    public void setBuyerPhone(String buyerPhone) {
+        this.buyerPhone = buyerPhone;
+    }
+
+    public String getBuyerAddress() {
+        return buyerAddress;
+    }
+
+    public void setBuyerAddress(String buyerAddress) {
+        this.buyerAddress = buyerAddress;
     }
 
     public void setPayStatus(int payStatus) {

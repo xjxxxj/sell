@@ -33,7 +33,13 @@ public class ProductServiceImpl implements ProductService {
      */
     @Override
     public List<ProductDto> findAll() {
-        return null;
+        ProductDto productDto = new ProductDto();
+        List<ProductInfo> productInfoList = productRepository.findAll();
+        ProductInfoVo foods = productDto.getFoods();
+        for(ProductInfo productInfo:productInfoList){
+
+        }
+        return null ;
     }
 
     @Override

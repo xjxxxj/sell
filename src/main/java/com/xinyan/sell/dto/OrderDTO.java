@@ -30,5 +30,75 @@ public class OrderDTO {
     /**订单修改时间*/
     private Date updateTime;
 
+    public String getOrderId() {
+        return orderId;
+    }
 
+    public void setOrderId(String orderId) {
+        this.orderId = orderId;
+    }
+
+    public String getBuyerName() {
+        return buyerName;
+    }
+
+    public void setBuyerName(String buyerName) {
+        this.buyerName = buyerName;
+    }
+
+    public String getBuyerPhone() {
+        return buyerPhone;
+    }
+
+    public void setBuyerPhone(String buyerPhone) {
+        this.buyerPhone = buyerPhone;
+    }
+
+    public String getBuyerAddress() {
+        return buyerAddress;
+    }
+
+    public void setBuyerAddress(String buyerAddress) {
+        this.buyerAddress = buyerAddress;
+    }
+
+    public Long getOrderAmount() {
+        return orderAmount;
+    }
+
+    public void setOrderAmount(Long orderAmount) {
+        this.orderAmount = orderAmount;
+    }
+
+    public int getOrderStatus() {
+        return orderStatus;
+    }
+
+    public void setOrderStatus(int orderStatus) {
+        this.orderStatus = orderStatus;
+    }
+
+    public int getPayStatus() {
+        return payStatus;
+    }
+
+    public void setPayStatus(int payStatus) {
+        this.payStatus = payStatus;
+    }
+
+    public Date getCreateTime() {
+        return createTime;
+    }
+
+    public void setCreateTime(Date createTime) {
+        this.createTime = createTime;
+    }
+
+    public Date getUpdateTime() {
+        return updateTime;
+    }
+
+    public void setUpdateTime(Date updateTime) {
+        this.updateTime = updateTime;
+    }
 }
