@@ -1,5 +1,7 @@
 package com.xinyan.sell.service;
 
+import com.xinyan.sell.dto.OrderDTO;
+import com.xinyan.sell.form.OrderForm;
 import com.xinyan.sell.po.Order;
 import org.springframework.data.domain.Page;
 
@@ -16,27 +18,28 @@ public interface OrderService {
     *@author 李显君
     *@date 2018/11/19 16:42
     */
-     Order createOrder(Order order);
+     OrderDTO createOrder(OrderDTO orderDTO);
     
     /*@program：订单（order）
      *订单列表
     *@author 李显君
     *@date 2018/11/19 16:53
     */
-     Page<Order> findList(Order order);
+     Page<OrderDTO> findList(OrderDTO orderDTO);
+
     /*@program：订单（order）
     *查询订单
     *@author 李显君
     *@date 2018/11/19 17:16
     */
-     Order findOrderById(String orderId);
+     OrderDTO findOrderById(String orderId);
     
     /*@program：订单（order）
     *取消订单
     *@author 李显君
     *@date 2018/11/19 17:19
     */
-     Order cancelOrder(Order order);
+     OrderDTO cancelOrder(OrderDTO orderDTO);
     
     
     /*@program：订单（order）
@@ -44,6 +47,6 @@ public interface OrderService {
     *@author 李显君
     *@date 2018/11/19 17:21
     */
-     Order payOrder(Order order);
+     OrderDTO payOrder(OrderDTO orderDTO);
 
 }
