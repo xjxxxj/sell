@@ -1,8 +1,9 @@
-package com.xinyan.sell.service;
+package com.xinyan.sell.service.impl;
 
 import com.xinyan.sell.dto.ProductDto;
 import com.xinyan.sell.po.ProductInfo;
 import com.xinyan.sell.repository.ProductRepository;
+import com.xinyan.sell.service.ProductService;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
