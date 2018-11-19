@@ -1,12 +1,9 @@
 package com.xinyan.sell.vo;
 
-import com.xinyan.sell.enums.OrderStatus;
 import com.xinyan.sell.enums.PayStatus;
 
 
 import java.io.Serializable;
-import java.math.BigDecimal;
-import java.util.Date;
 
 /**
  * @Description: OrderMainList类  订单信息主表
