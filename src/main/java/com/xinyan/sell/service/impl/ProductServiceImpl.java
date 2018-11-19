@@ -1,6 +1,6 @@
-package com.xinyan.sell.service.impl;
+package com.xinyan.sell.service.impl ;
 
-import com.xinyan.sell.dto.ProductDto;
+import com.xinyan.sell.dto.ProductByCategoryDto;
 import com.xinyan.sell.po.ProductInfo;
 import com.xinyan.sell.repository.ProductRepository;
 import com.xinyan.sell.service.ProductService;
@@ -32,13 +32,8 @@ public class ProductServiceImpl implements ProductService {
      * @Time: 19:15
      */
     @Override
-    public List<ProductDto> findAll() {
-        ProductDto productDto = new ProductDto();
-        List<ProductInfo> productInfoList = productRepository.findAll();
-        ProductInfoVo foods = productDto.getFoods();
-        for(ProductInfo productInfo:productInfoList){
+    public List<ProductByCategoryDto> findAll() {
 
-        }
         return null ;
     }
 
