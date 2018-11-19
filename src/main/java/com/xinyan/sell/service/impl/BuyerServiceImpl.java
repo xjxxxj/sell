@@ -27,4 +27,9 @@ public class BuyerServiceImpl implements BuyerService {
     public BuyerInfo queryBuyerByOpenId(String openid) {
         return buyerRepository.findOne(openid) ;
     }
+
+    @Override
+    public void saveBuyer(BuyerInfo buyerInfo) {
+
+    }
 }

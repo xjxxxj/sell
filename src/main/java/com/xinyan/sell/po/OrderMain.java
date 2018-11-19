@@ -4,6 +4,7 @@ import com.xinyan.sell.enums.OrderStatus;
 import com.xinyan.sell.enums.PayStatus;
 
 import javax.persistence.Entity;
+import javax.persistence.Id;
 import java.util.Date;
 
 /**
@@ -16,21 +17,22 @@ import java.util.Date;
 * @UpdateRemark:
 * @Version:
 */
-@Entity
+@Entity(name = "tb_order")
 public class OrderMain {
-    //订单Id
+    /**订单Id*/
+    @Id
     private String orderId;
-    //详情信息
+    /**详情信息*/
     private String detailId;
-    //订单总金额
+    /**订单总金额*/
     private Double orderAmount;
-    //订单状态
+    /**订单状态*/
     private OrderStatus orderStatus;
-    //支付状态
+    /**支付状态*/
     private PayStatus payStatus;
-    //订单创建时间
+    /**订单创建时间*/
     private Date createTime;
-    //订单修改时间
+    /**订单修改时间*/
     private Date updateTime;
 
     public OrderMain() {

@@ -1,6 +1,7 @@
 package com.xinyan.sell.po;
 
 import javax.persistence.Entity;
+import javax.persistence.Id;
 
 /**
 
@@ -12,21 +13,22 @@ import javax.persistence.Entity;
 * @UpdateRemark:
 * @Version:
 */
-@Entity
+@Entity(name = "tb_product_info")
 public class ProductInfo {
-    //商品Id
+    /**商品Id*/
+    @Id
     private String productId;
-    //商品名称
+    /**商品名称*/
     private String productName;
-    //商品单价
+    /**商品单价*/
     private Double productPrice;
-    //商品描述
+    /**商品描述*/
     private String description;
-    //商品图标
+    /**商品图标*/
     private String productIcon;
-    //商品所属类目名
+    /**商品所属类目名*/
     private String categoryName;
-    //商品类目类型
+    /**商品类目类型*/
     private Integer categoryType;
 
     public ProductInfo() {

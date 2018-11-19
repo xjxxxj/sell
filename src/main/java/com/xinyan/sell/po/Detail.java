@@ -1,6 +1,7 @@
 package com.xinyan.sell.po;
 
 import javax.persistence.Entity;
+import javax.persistence.Id;
 
 /**
 
@@ -12,8 +13,9 @@ import javax.persistence.Entity;
 * @UpdateRemark:
 * @Version:
 */
-@Entity
+@Entity(name = "tb_detail")
 public class Detail {
+    @Id
     private String detailId;
     private String productId;
     private String productName;

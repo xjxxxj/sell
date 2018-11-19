@@ -1,6 +1,8 @@
 package com.xinyan.sell.po;
 
 import javax.persistence.Entity;
+import javax.persistence.Id;
+
 /**
 
 * @Description:    BuyerInfo 买家信息表
@@ -11,16 +13,17 @@ import javax.persistence.Entity;
 * @UpdateRemark:
 * @Version:
 */
-@Entity
+@Entity(name = "tb_buyer")
 public class BuyerInfo {
-    //买家姓名
-    private String buyerName;
-    //买家手机号
-    private String buyerPhone;
-    //买家地址
-    private String buyerAddress;
-    //买家OpenId
+    /**买家OpenId，买家唯一标识*/
+    @Id
     private String buyerOpenId;
+    /**买家姓名*/
+    private String buyerName;
+    /**买家手机号*/
+    private String buyerPhone;
+    /**买家地址*/
+    private String buyerAddress;
 
     public BuyerInfo() {
     }
