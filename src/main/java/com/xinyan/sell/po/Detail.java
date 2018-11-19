@@ -1,6 +1,7 @@
 package com.xinyan.sell.po;
 
 import javax.persistence.Entity;
+import javax.persistence.Id;
 import java.io.Serializable;
 
 /**
@@ -13,36 +14,28 @@ import java.io.Serializable;
 * @UpdateRemark:
 * @Version:
 */
-@Entity
+@Entity(name = "tb_detail")
 public class Detail implements Serializable {
-
     private static final long serialVersionUID = -6907727212568582223L;
-    /**详情项Id*/
+    /**订单项详情id,唯一标识*/
+    @Id
     private String detailId;
-    /**商品Id*/
+    /**订单项中，商品的id*/
     private String productId;
-    /**商品名称*/
+    /**商品的名字*/
     private String productName;
-    /**商品单价*/
-    private Double productPrice;
-    /**商品数量*/
+    /**商品的单价，单位：分*/
+    private Long productPrice;
+    /**商品的数量，单位：件*/
     private Integer productQuantity;
-    /**商品图标*/
+    /**商品的小图标，在商品列表时使用*/
     private String productIcon;
-    /**商品图片*/
+    /**商品的图片，在商品详情时使用*/
     private String productImage;
+    /**订单项所属的订单id*/
+    private String orderId ;
 
     public Detail() {
-    }
-
-    public Detail(String detailId, String productId, String productName, Double productPrice, Integer productQuantity, String productIcon, String productImage) {
-        this.detailId = detailId;
-        this.productId = productId;
-        this.productName = productName;
-        this.productPrice = productPrice;
-        this.productQuantity = productQuantity;
-        this.productIcon = productIcon;
-        this.productImage = productImage;
     }
 
     public String getDetailId() {
@@ -69,11 +62,11 @@ public class Detail implements Serializable {
         this.productName = productName;
     }
 
-    public Double getProductPrice() {
+    public Long getProductPrice() {
         return productPrice;
     }
 
-    public void setProductPrice(Double productPrice) {
+    public void setProductPrice(Long productPrice) {
         this.productPrice = productPrice;
     }
 
@@ -101,16 +94,11 @@ public class Detail implements Serializable {
         this.productImage = productImage;
     }
 
-    @Override
-    public String toString() {
-        return "OrderDetailList{" +
-                "detailId='" + detailId + '\'' +
-                ", productId='" + productId + '\'' +
-                ", productName='" + productName + '\'' +
-                ", productPrice=" + productPrice +
-                ", productQuantity=" + productQuantity +
-                ", productIcon='" + productIcon + '\'' +
-                ", productImage='" + productImage + '\'' +
-                '}';
+    public String getOrderId() {
+        return orderId;
+    }
+
+    public void setOrderId(String orderId) {
+        this.orderId = orderId;
     }
 }

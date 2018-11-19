@@ -15,8 +15,8 @@ import java.io.Serializable;
 
 public enum OrderStatus implements Serializable {
 
-    SUCCESS(0,"成功"),
-    FAILED(1,"失败");
+    SUCCESS(0,"已完成"),
+    FAILED(1,"未完成");
     /**
      * 订单状态码
      */

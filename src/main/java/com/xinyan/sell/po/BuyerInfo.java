@@ -1,9 +1,10 @@
 package com.xinyan.sell.po;
 
 import javax.persistence.Entity;
-import java.io.Serializable;
+import javax.persistence.Id;
 
 /**
+
 * @Description:    BuyerInfo 买家信息表
 * @Author:         Hp
 * @CreateDate:     17/11/2018 18:27
@@ -12,18 +13,17 @@ import java.io.Serializable;
 * @UpdateRemark:
 * @Version:
 */
-@Entity
-public class BuyerInfo implements Serializable {
-
-    private static final long serialVersionUID = 2104120713157859612L;
+@Entity(name = "tb_buyer")
+public class BuyerInfo {
+    /**买家OpenId，买家唯一标识*/
+    @Id
+    private String buyerOpenId;
     /**买家姓名*/
     private String buyerName;
     /**买家手机号*/
     private String buyerPhone;
     /**买家地址*/
     private String buyerAddress;
-    /**买家OpenId*/
-    private String buyerOpenId;
 
     public BuyerInfo() {
     }

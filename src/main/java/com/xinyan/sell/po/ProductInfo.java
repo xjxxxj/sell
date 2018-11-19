@@ -1,9 +1,10 @@
 package com.xinyan.sell.po;
 
 import javax.persistence.Entity;
-import java.io.Serializable;
+import javax.persistence.Id;
 
 /**
+
 * @Description:    ProductInfo  商品信息列表
 * @Author:         Hp
 * @CreateDate:     19/11/2018 10:04
@@ -12,10 +13,10 @@ import java.io.Serializable;
 * @UpdateRemark:
 * @Version:
 */
-@Entity
-public class ProductInfo implements Serializable {
-    private static final long serialVersionUID = 4103977930413886918L;
+@Entity(name = "tb_product_info")
+public class ProductInfo {
     /**商品Id*/
+    @Id
     private String productId;
     /**商品名称*/
     private String productName;
