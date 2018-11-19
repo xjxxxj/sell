@@ -8,4 +8,7 @@ package com.xinyan.sell.service;
  */
 
 public interface OrderService {
+
+
+
 }

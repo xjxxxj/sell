@@ -13,10 +13,30 @@ import java.io.Serializable;
  */
 public class ResultVo implements Serializable {
     private static final long serialVersionUID = -7103945530792926099L;
-
+    /**0:成功，1:失败*/
     private Integer code;
+    /**提示信息*/
     private String msg;
     private Object data;
+
+    public static ResultVo erro(String msc , Object erroObject){
+        return new ResultVo(1,msc,erroObject) ;
+    }
+
+    public static ResultVo erro(String msc){
+        return new ResultVo(1,msc,null) ;
+    }
+
+    public static ResultVo ok(String msc , Object data){
+        return new ResultVo(0,msc,data) ;
+    }
+    public static ResultVo ok(){
+        return new ResultVo(0,"成功" ,null) ;
+    }
+
+    public static ResultVo ok(Object data){
+        return new ResultVo(0,"成功" ,data) ;
+    }
 
     public ResultVo() {
     }
