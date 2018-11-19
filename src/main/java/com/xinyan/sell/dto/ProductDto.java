@@ -1,4 +1,7 @@
-package com.xinyan.sell.vo;
+package com.xinyan.sell.dto;
+
+import com.xinyan.sell.vo.ProductCategoryVo;
+import com.xinyan.sell.vo.ProductInfoVo;
 
 /**
  * @Description: Product Vo对象 封装了商品类目信息和前端展示的商品信息，
@@ -10,16 +13,17 @@ package com.xinyan.sell.vo;
  * @UpdateRemark:
  * @Version:
  */
-public class ProductVo {
-    //传入ProductCategoryVo对象
+public class ProductDto {
+    /**传入ProductCategoryVo对象*/
     private ProductCategoryVo category;
-    //传入ProductInfoVo对象
+
+    /**传入ProductInfoVo对象*/
     private ProductInfoVo foods;
 
-    public ProductVo() {
+    public ProductDto() {
     }
 
-    public ProductVo(ProductCategoryVo category, ProductInfoVo foods) {
+    public ProductDto(ProductCategoryVo category, ProductInfoVo foods) {
         this.category = category;
         this.foods = foods;
     }

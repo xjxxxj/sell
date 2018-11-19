@@ -1,5 +1,6 @@
 package com.xinyan.sell.service;
 
+import com.xinyan.sell.dto.ProductDto;
 import com.xinyan.sell.po.ProductInfo;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -33,7 +34,7 @@ public interface ProductService {
     * @exception
     * @date        19/11/2018 14:49
     */
-    List<ProductInfo> findAll();
+    List<ProductDto> findAll();
     /**
     * @description  分页查询所有商品信息
     * @author      Hp

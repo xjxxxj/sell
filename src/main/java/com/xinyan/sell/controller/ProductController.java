@@ -1,10 +1,13 @@
 package com.xinyan.sell.controller;
 
+import com.xinyan.sell.dto.ProductDto;
 import com.xinyan.sell.service.ProductService;
 import com.xinyan.sell.vo.ResultVo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+
+import java.util.List;
 
 /**
  * @program: sell
@@ -16,17 +19,19 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("/buyer/product")
 public class ProductController {
 
+    @Autowired
     private ProductService productService ;
     /**
-     * @Description: 获取所有商品类别
+     * @Description: 获取所有商品信息
      * @Author: 谢庆香
      * @Date: 2018\11\19 0019
      * @Time: 17:21
      */
     @RequestMapping("/list")
     public ResultVo getProductList(){
-
-        return ResultVo.ok() ;
+        //获取所有商品信息
+        List<ProductDto> productsDto = productService.findAll() ;
+        return ResultVo.ok(productsDto) ;
     }
 
 }
