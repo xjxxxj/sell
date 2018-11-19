@@ -1,5 +1,6 @@
 package com.xinyan.sell.vo;
 
+import com.xinyan.sell.enums.OrderStatus;
 import com.xinyan.sell.enums.PayStatus;
 
 
