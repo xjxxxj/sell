@@ -1,6 +1,7 @@
 package com.xinyan.sell.po;
 
 import javax.persistence.Entity;
+import java.io.Serializable;
 
 /**
 
@@ -13,13 +14,22 @@ import javax.persistence.Entity;
 * @Version:
 */
 @Entity
-public class Detail {
+public class Detail implements Serializable {
+
+    private static final long serialVersionUID = -6907727212568582223L;
+    /**详情项Id*/
     private String detailId;
+    /**商品Id*/
     private String productId;
+    /**商品名称*/
     private String productName;
+    /**商品单价*/
     private Double productPrice;
+    /**商品数量*/
     private Integer productQuantity;
+    /**商品图标*/
     private String productIcon;
+    /**商品图片*/
     private String productImage;
 
     public Detail() {

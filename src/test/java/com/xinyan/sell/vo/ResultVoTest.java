@@ -73,8 +73,8 @@ public class ResultVoTest {
     @Test
     public void testQueryOderList() throws JsonProcessingException {
         OrderDetailListVo orderDetailList = new OrderDetailListVo("16541613216841","653123165",
-                132131321,"干锅土豆",
-                12,2,"https://ss2.bdstatic.com/70cFvnSh_Q1YnxGkpoWK1HF6hhy/it/u=3859415049,3794064123&fm=26&gp=0.jpg","https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1542435832946&di=e0ae1fcceb060de1ab627b6540e2d6aa&imgtype=0&src=http%3A%2F%2Fls.csc86.com%2Fuploadfile%2F2015%2F0908%2F20150908104910776.jpg");
+                "135465461","干锅土豆",
+                12.0,2,"https://ss2.bdstatic.com/70cFvnSh_Q1YnxGkpoWK1HF6hhy/it/u=3859415049,3794064123&fm=26&gp=0.jpg","https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1542435832946&di=e0ae1fcceb060de1ab627b6540e2d6aa&imgtype=0&src=http%3A%2F%2Fls.csc86.com%2Fuploadfile%2F2015%2F0908%2F20150908104910776.jpg");
         OrderMainListVo orderMainList = new OrderMainListVo
                 ("653123165","王小二","13888888888"
                         ,"宝安区","a46s5d46a5s4d6",28
