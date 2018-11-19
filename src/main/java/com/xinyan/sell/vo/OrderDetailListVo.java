@@ -3,14 +3,14 @@ package com.xinyan.sell.vo;
 import java.io.Serializable;
 
 /**
-* @Description:    OrderDetailList类  订单商品详情信息列表
-* @Author:         Hp
-* @CreateDate:     16/11/2018 16:44
-* @UpdateUser:     Hp
-* @UpdateDate:     16/11/2018 16:44
-* @UpdateRemark:
-* @Version:
-*/
+ * @Description: OrderDetailList类  订单商品详情信息列表
+ * @Author: Hp
+ * @CreateDate: 16/11/2018 16:44
+ * @UpdateUser: Hp
+ * @UpdateDate: 16/11/2018 16:44
+ * @UpdateRemark:
+ * @Version:
+ */
 
 public class OrderDetailListVo implements Serializable {
     /**
@@ -18,7 +18,7 @@ public class OrderDetailListVo implements Serializable {
      */
     private static final long serialVersionUID = -6267470651070790231L;
     /**
-     *订单详情主键Id
+     * 订单详情主键Id
      */
     private String detailId;
     /**
@@ -28,7 +28,7 @@ public class OrderDetailListVo implements Serializable {
     /**
      * 订单商品Id
      */
-    private String  productId;
+    private String productId;
     /**
      * 订单商品名称
      */

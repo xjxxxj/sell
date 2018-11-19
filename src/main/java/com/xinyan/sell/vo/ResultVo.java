@@ -3,22 +3,23 @@ package com.xinyan.sell.vo;
 import java.io.Serializable;
 
 /**
-
-* @Description:    ResultVo  统一封装Json数据返回格式
-* @Author:         Hp
-* @CreateDate:     17/11/2018 14:33
-* @UpdateUser:     Hp
-* @UpdateDate:     17/11/2018 14:33
-* @UpdateRemark:   修改内容
-* @Version:        1.0
-*/
+ * @Description: ResultVo  统一封装Json数据返回格式
+ * @Author: Hp
+ * @CreateDate: 17/11/2018 14:33
+ * @UpdateUser: Hp
+ * @UpdateDate: 17/11/2018 14:33
+ * @UpdateRemark: 修改内容
+ * @Version: 1.0
+ */
 public class ResultVo implements Serializable {
     private static final long serialVersionUID = -7103945530792926099L;
 
     private Integer code;
     private String msg;
     private Object data;
-    public ResultVo() {}
+
+    public ResultVo() {
+    }
 
     public ResultVo(Integer code, String msg, Object data) {
         this.code = code;

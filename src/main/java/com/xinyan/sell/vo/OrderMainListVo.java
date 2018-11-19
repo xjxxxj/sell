@@ -7,15 +7,16 @@ import com.xinyan.sell.enums.PayStatus;
 import java.io.Serializable;
 import java.math.BigDecimal;
 import java.util.Date;
+
 /**
-* @Description:    OrderMainList类  订单信息主表
-* @Author:         Hp
-* @CreateDate:     16/11/2018 16:52
-* @UpdateUser:     Hp
-* @UpdateDate:     16/11/2018 16:52
-* @UpdateRemark:
-* @Version:
-*/
+ * @Description: OrderMainList类  订单信息主表
+ * @Author: Hp
+ * @CreateDate: 16/11/2018 16:52
+ * @UpdateUser: Hp
+ * @UpdateDate: 16/11/2018 16:52
+ * @UpdateRemark:
+ * @Version:
+ */
 
 public class OrderMainListVo implements Serializable {
     /**
@@ -44,32 +45,32 @@ public class OrderMainListVo implements Serializable {
      */
     private String buyerOpenid;
     /**
-     *订单总价格
+     * 订单总价格
      */
     private Integer orderAmount;
     /**
-     *订单状态
+     * 订单状态
      * SUCCESS(0,"成功"),
      * FAILED(1,"失败")
      */
     private OrderStatus orderStatus;
     /**
-     *支付状态
+     * 支付状态
      * WAIT(0,"未支付"),
      * FINISHED(1,"已支付")
      */
     private PayStatus payStatus;
     /**
-     *订单创建时间
+     * 订单创建时间
      * 一旦创建，不会更改
      */
     private Long createTime;
     /**
-     *订单修改时间
+     * 订单修改时间
      */
     private Long updateTime;
     /**
-     *订单商品详情信息表
+     * 订单商品详情信息表
      */
     private OrderDetailListVo orderDetailList;
 

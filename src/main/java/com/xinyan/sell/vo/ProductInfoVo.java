@@ -1,18 +1,17 @@
 package com.xinyan.sell.vo;
 
 
-
 import java.io.Serializable;
 
 /**
-* @Description:    ProductInfo类  前端展示的商品信息
-* @Author:         Hp
-* @CreateDate:     16/11/2018 17:20
-* @UpdateUser:     Hp
-* @UpdateDate:     16/11/2018 17:20
-* @UpdateRemark:
-* @Version:
-*/
+ * @Description: ProductInfo类  前端展示的商品信息
+ * @Author: Hp
+ * @CreateDate: 16/11/2018 17:20
+ * @UpdateUser: Hp
+ * @UpdateDate: 16/11/2018 17:20
+ * @UpdateRemark:
+ * @Version:
+ */
 public class ProductInfoVo implements Serializable {
     public ProductInfoVo() {
     }

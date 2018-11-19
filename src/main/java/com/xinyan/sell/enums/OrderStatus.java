@@ -3,20 +3,21 @@ package com.xinyan.sell.enums;
 import lombok.Getter;
 
 import java.io.Serializable;
+
 /**
-* @Description:    OrderStatus 枚举类  订单完成状态信息举例
-* @Author:         Hp
-* @CreateDate:     16/11/2018 17:26
-* @UpdateUser:     Hp
-* @UpdateDate:     16/11/2018 17:26
-* @UpdateRemark:
-* @Version:
-*/
+ * @Description: OrderStatus 枚举类  订单完成状态信息举例
+ * @Author: Hp
+ * @CreateDate: 16/11/2018 17:26
+ * @UpdateUser: Hp
+ * @UpdateDate: 16/11/2018 17:26
+ * @UpdateRemark:
+ * @Version:
+ */
 
 public enum OrderStatus implements Serializable {
 
-    SUCCESS(0,"成功"),
-    FAILED(1,"失败");
+    SUCCESS(0, "成功"),
+    FAILED(1, "失败");
     /**
      * 订单状态码
      */

@@ -11,8 +11,7 @@ import static org.junit.Assert.*;
 public class OrderDetailListTest {
 
     @Test
-    public void getJson(){
-        new OrderDetailList() ;
+    public void getJson(){;
     }
 
 }
