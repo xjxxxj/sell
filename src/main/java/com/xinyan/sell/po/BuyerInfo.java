@@ -2,6 +2,7 @@ package com.xinyan.sell.po;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import java.io.Serializable;
 
 /**
 
@@ -14,7 +15,8 @@ import javax.persistence.Id;
 * @Version:
 */
 @Entity(name = "tb_buyer")
-public class BuyerInfo {
+public class BuyerInfo implements Serializable {
+    private static final long serialVersionUID = 2104120713157859612L;
     /**买家OpenId，买家唯一标识*/
     @Id
     private String buyerOpenId;
