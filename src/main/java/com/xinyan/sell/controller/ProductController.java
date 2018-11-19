@@ -1,7 +1,8 @@
 package com.xinyan.sell.controller;
 
-import com.xinyan.sell.vo.ProductVo;
+import com.xinyan.sell.service.ProductService;
 import com.xinyan.sell.vo.ResultVo;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -14,8 +15,17 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 @RequestMapping("/buyer/product")
 public class ProductController {
+
+    private ProductService productService ;
+    /**
+     * @Description: 获取所有商品类别
+     * @Author: 谢庆香
+     * @Date: 2018\11\19 0019
+     * @Time: 17:21
+     */
     @RequestMapping("/list")
     public ResultVo getProductList(){
+
         return ResultVo.ok() ;
     }
 

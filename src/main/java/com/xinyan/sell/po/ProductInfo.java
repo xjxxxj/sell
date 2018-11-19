@@ -24,7 +24,7 @@ public class ProductInfo {
     private Double productPrice;
     /**商品描述*/
     private String description;
-    /**商品图标*/
+    //商品图标
     private String productIcon;
     /**商品所属类目名*/
     private String categoryName;
