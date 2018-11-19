@@ -1,6 +1,5 @@
 package com.xinyan.sell.service.impl;
 
-import com.xinyan.sell.service.OrderService;
 import org.springframework.stereotype.Service;
 
 /**
@@ -10,6 +9,6 @@ import org.springframework.stereotype.Service;
  * @create: 2018-11-19 11:45
  **/
 @Service
-public class OrderServiceImpl implements OrderService {
+public class OrderServiceImpl {
 
 }

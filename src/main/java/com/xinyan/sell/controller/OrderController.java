@@ -2,7 +2,6 @@ package com.xinyan.sell.controller;
 
 import com.xinyan.sell.form.OrderForm;
 import com.xinyan.sell.po.BuyerInfo;
-import com.xinyan.sell.service.OrderService;
 import com.xinyan.sell.service.BuyerService;
 import com.xinyan.sell.vo.ResultVo;
 import org.springframework.beans.factory.annotation.Autowired;
