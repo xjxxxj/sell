@@ -1,7 +1,6 @@
 package com.xinyan.sell.service;
 
 import com.xinyan.sell.dto.ProductByCategoryDto;
-import com.xinyan.sell.dto.ProductDto;
 import com.xinyan.sell.po.ProductInfo;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
