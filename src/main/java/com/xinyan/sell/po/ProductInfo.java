@@ -45,6 +45,8 @@ public class ProductInfo implements Serializable {
      * 商品类目类型
      */
     private Integer categoryType;
+    /**商品状态，0：已上架  1、已下架，默认已上架*/
+    private int status ;
 
     public ProductInfo() {
     }
@@ -56,6 +58,14 @@ public class ProductInfo implements Serializable {
         this.description = description;
         this.icon = icon;
         this.categoryType = categoryType;
+    }
+
+    public int getStatus() {
+        return status;
+    }
+
+    public void setStatus(int status) {
+        this.status = status;
     }
 
     public Integer getId() {

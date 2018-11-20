@@ -1,17 +1,17 @@
 /*
  Navicat Premium Data Transfer
 
- Source Server         : mysql
+ Source Server         : aliyun
  Source Server Type    : MySQL
- Source Server Version : 50711
- Source Host           : localhost:3306
+ Source Server Version : 50622
+ Source Host           : 47.105.47.141:3306
  Source Schema         : sell
 
  Target Server Type    : MySQL
- Target Server Version : 50711
+ Target Server Version : 50622
  File Encoding         : 65001
 
- Date: 20/11/2018 01:27:18
+ Date: 20/11/2018 09:47:18
 */
 
 SET NAMES utf8mb4;
@@ -88,6 +88,7 @@ CREATE TABLE `tb_product_info`  (
   `description` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '商品的描述',
   `icon` varchar(500) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '商品的图标url',
   `categoryType` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '商品所属类别的名字',
+  `status` smallint(1) NULL DEFAULT NULL COMMENT '0、已上架  1、已下架',
   PRIMARY KEY (`id`) USING BTREE
 ) ENGINE = InnoDB AUTO_INCREMENT = 1 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = Compact;
 
