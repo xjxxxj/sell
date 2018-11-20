@@ -1,6 +1,7 @@
 package com.xinyan.sell.controller;
 
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 /**
@@ -12,9 +13,15 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @Controller
 @RequestMapping("/admin")
 public class AdminController {
+
     @RequestMapping("order/list")
     public String toList(){
         return "order/list" ;
     }
 
+    @RequestMapping("common/error")
+    public String toError(Model model){
+        model.addAttribute("msg","错误");
+        return "common/error";
+    }
 }

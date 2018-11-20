@@ -24,18 +24,7 @@ public class OrderController {
     private OrderService orderService ;
     @Autowired
     private BuyerService userService ;
-    /**创建订单*/
-    @RequestMapping("/create")
-    @ResponseBody
-    public ResultVo create(OrderForm orderForm){
-        ResultVo resultVo = new ResultVo();
-        //查看用户是否存在
-        BuyerInfo buyerInfo = userService.queryBuyerByOpenId(orderForm.getOpenid()) ;
-        if(buyerInfo == null){
 
-        }
-        return resultVo ;
-    }
 
 
 }

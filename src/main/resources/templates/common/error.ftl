@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="">
     <title>微信点餐管理后台 - 错误提示</title>
-    <link href="${basePath}/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="${basePath}/assets/libs/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
 </head>
 <body>
 <div class="pricing-header px-3 py-3 pt-md-5 pb-md-4 mx-auto text-center">
@@ -21,19 +21,20 @@
                 <h4>
                     <span class="glyphicon glyphicon-volume-up" aria-hidden="true"></span>
                     <span class="sr-only">Error:</span>
-                    错误!
+                    错误!fsdfsfds
                 </h4>
-                <strong>${msg}, </strong>
-                <a href="${basePath}/${url}" class="alert-link">3秒后页面自动跳转...</a>
+                <strong>${msg}</strong>
+                <a href="${basePath}" class="alert-link">3秒后页面自动跳转...</a>
             </div>
         </div>
     </div>
 </div>
 
 <script>
+    console.log("${basePath}") ;
     //页面自动跳转
     setTimeout(function(){
-        window.location.href = "${basePath}/${url}";
+        window.location.href = "${basePath}";
     }, 3000);
 </script>
 </body>
