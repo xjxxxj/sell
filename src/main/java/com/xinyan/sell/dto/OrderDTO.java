@@ -1,31 +1,25 @@
-package com.xinyan.sell.po;
+package com.xinyan.sell.dto;
 
 import com.xinyan.sell.enums.OrderStatus;
 import com.xinyan.sell.enums.PayStatus;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import java.io.Serializable;
 import java.util.Date;
-import java.util.List;
 
 /**
-
-* @Description:    OrderMain 订单对象
-* @Author:         Hp
-* @CreateDate:     17/11/2018 18:35
-* @UpdateUser:     Hp
-* @UpdateDate:     17/11/2018 18:35
-* @UpdateRemark:
-* @Version:
-*/
-@Entity(name = "tb_order")
-public class Order implements Serializable {
-    private static final long serialVersionUID = 4062850551827287900L;
-    /**订单Id*/
-    @Id
+ * @program：sell
+ * @Auther:李显君
+ * @Date: 2018/11/19 17 :46
+ */
+public class OrderDTO {
+    /**订单id*/
     private String orderId;
-    /**订单总金额，单位是分*/
+    /**卖家名字*/
+    private String buyerName;
+    /**卖家电话*/
+    private String buyerPhone;
+    /**卖家地址*/
+    private String buyerAddress;
+    /**订单总金额*/
     private Long orderAmount;
     /**订单状态 ，0：订单已完成 ；1：未完成,默认未完成*/
     private int orderStatus = OrderStatus.FAILED.getCode();
@@ -35,36 +29,21 @@ public class Order implements Serializable {
     private Date createTime;
     /**订单修改时间*/
     private Date updateTime;
-    /**买家id*/
-    private String buyerOpenId ;
-    /**买家名字*/
-    private String buyername ;
-    /**买家电话*/
-    private String buyerPhone ;
-    /**买家地址*/
-    private String buyerAddress ;
 
-    public Order() {
+    public String getOrderId() {
+        return orderId;
     }
 
-    public int getPayStatus() {
-        return payStatus;
+    public void setOrderId(String orderId) {
+        this.orderId = orderId;
     }
 
-    public String getBuyerOpenId() {
-        return buyerOpenId;
+    public String getBuyerName() {
+        return buyerName;
     }
 
-    public void setBuyerOpenId(String buyerOpenId) {
-        this.buyerOpenId = buyerOpenId;
-    }
-
-    public String getBuyername() {
-        return buyername;
-    }
-
-    public void setBuyername(String buyername) {
-        this.buyername = buyername;
+    public void setBuyerName(String buyerName) {
+        this.buyerName = buyerName;
     }
 
     public String getBuyerPhone() {
@@ -83,18 +62,6 @@ public class Order implements Serializable {
         this.buyerAddress = buyerAddress;
     }
 
-    public void setPayStatus(int payStatus) {
-        this.payStatus = payStatus;
-    }
-
-    public String getOrderId() {
-        return orderId;
-    }
-
-    public void setOrderId(String orderId) {
-        this.orderId = orderId;
-    }
-
     public Long getOrderAmount() {
         return orderAmount;
     }
@@ -111,10 +78,15 @@ public class Order implements Serializable {
         this.orderStatus = orderStatus;
     }
 
+    public int getPayStatus() {
+        return payStatus;
+    }
+
+    public void setPayStatus(int payStatus) {
+        this.payStatus = payStatus;
+    }
+
     public Date getCreateTime() {
-        if(this.createTime == null){
-            this.createTime = new Date() ;
-        }
         return createTime;
     }
 
@@ -123,9 +95,6 @@ public class Order implements Serializable {
     }
 
     public Date getUpdateTime() {
-        if(this.updateTime == null){
-            this.updateTime = new Date() ;
-        }
         return updateTime;
     }
 

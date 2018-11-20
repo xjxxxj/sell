@@ -23,7 +23,7 @@
                     <span class="sr-only">Error:</span>
                     成功!
                 </h4>
-                <strong>${msg}, </strong>
+                <strong>${msg}</strong>
                 <a href="${basePath}/${url}" class="alert-link">3秒后页面自动跳转...</a>
             </div>
         </div>

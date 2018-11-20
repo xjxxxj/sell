@@ -21,20 +21,20 @@
                 <h4>
                     <span class="glyphicon glyphicon-volume-up" aria-hidden="true"></span>
                     <span class="sr-only">Error:</span>
-                    错误!fsdfsfds
+                    错误!
                 </h4>
                 <strong>${msg}</strong>
-                <a href="${basePath}" class="alert-link">3秒后页面自动跳转...</a>
+                <a href="${basePath}/admin/order/list" class="alert-link">3秒后页面自动跳转...</a>
             </div>
         </div>
     </div>
 </div>
 
 <script>
-    console.log("${basePath}") ;
+
     //页面自动跳转
     setTimeout(function(){
-        window.location.href = "${basePath}";
+        window.location.href = "${basePath}/admin/order/list";
     }, 3000);
 </script>
 </body>

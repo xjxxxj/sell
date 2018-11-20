@@ -1,3 +1,4 @@
+<#assign basePath=request.contextPath />
 <script src="${basePath}/assets/libs/jquery/dist/jquery.min.js"></script>
 <script src="${basePath}/assets/extra-libs/taskboard/js/jquery.ui.touch-punch-improved.js"></script>
 <script src="${basePath}/assets/extra-libs/taskboard/js/jquery-ui.min.js"></script>

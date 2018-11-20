@@ -1,4 +1,5 @@
 <aside class="left-sidebar">
+    <#assign basePath=request.contextPath />
     <!-- Sidebar scroll-->
     <div class="scroll-sidebar">
         <!-- Sidebar navigation-->
@@ -21,7 +22,7 @@
                 <li class="sidebar-item">
                     <a class="sidebar-link has-arrow waves-effect waves-dark" href="javascript:void(0)" aria-expanded="false">
                         <i class="icon-Car-Wheel"></i>
-                        <span class="hide-menu">商品 </span>
+                        <span class="hide-menu">商品</span>
                     </a>
                     <ul aria-expanded="false" class="collapse  first-level">
                         <li class="sidebar-item">

@@ -13,7 +13,6 @@ import java.io.Serializable;
  * @UpdateRemark:
  * @Version:
  */
-@Getter
 public enum PayStatus implements Serializable {
     WAIT(0, "未支付"),
     FINISHED(1, "已支付");
@@ -29,6 +28,22 @@ public enum PayStatus implements Serializable {
 
     PayStatus(Integer code, String msg) {
         this.code = code;
+        this.msg = msg;
+    }
+
+    public Integer getCode() {
+        return code;
+    }
+
+    public void setCode(Integer code) {
+        this.code = code;
+    }
+
+    public String getMsg() {
+        return msg;
+    }
+
+    public void setMsg(String msg) {
         this.msg = msg;
     }
 }

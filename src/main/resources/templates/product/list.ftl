@@ -57,24 +57,7 @@
                                     </tr>
                                     </thead>
                                     <tbody>
-                                        <#list OrderList as ol>
-                                        <tr>
-                                            <td>${ol.orderId}</td>
-                                            <td>${ol.buyerName}</td>
-                                            <td>${ol.buyerPhone}</td>
-                                            <td>${ol.buyerAddress}</td>
-                                            <td>${ol.productPrice * ol.productQuantity}</td>
-                                            <td>${ol.orderStatus}</td>
-                                            <td>${ol.payStatus}</td>
-                                            <td>${ol.createTime}</td>
-                                            <td>
-                                                <a class="btn btn-sm btn-outline-info" href="${basePath}/sell/order/detail?orderId=${ol.orderId}">详情</a>
-                                                <#if ol.orderStatus == 0>
-                                                <a class="btn btn-sm btn-outline-danger" href="${basePath}/sell/order/cancel?orderId=${ol.orderId}">取消</a>
-                                                </#if>
-                                            </td>
-                                        </tr>
-                                        </#list>
+
                                     </tbody>
                                 </table>
                                 <!-- 分页 -->
