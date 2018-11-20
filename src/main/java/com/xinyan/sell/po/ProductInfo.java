@@ -30,9 +30,9 @@ public class ProductInfo implements Serializable {
      */
     private String name;
     /**
-     * 商品单价,单位：分
+     * 商品单价,单位：元
      */
-    private Long price;
+    private Double price;
     /**
      * 商品描述
      */
@@ -52,7 +52,7 @@ public class ProductInfo implements Serializable {
     }
 
 
-    public ProductInfo(String name, Long price, String description, String icon, Integer categoryType) {
+    public ProductInfo(String name, Double price, String description, String icon, Integer categoryType) {
         this.name = name;
         this.price = price;
         this.description = description;
@@ -85,10 +85,10 @@ public class ProductInfo implements Serializable {
     }
 
     public Double getPrice() {
-        return price.doubleValue()/100;
+        return price ;
     }
 
-    public void setPrice(Long price) {
+    public void setPrice(Double price) {
         this.price = price;
     }
 

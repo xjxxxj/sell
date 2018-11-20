@@ -1,6 +1,8 @@
 package com.xinyan.sell.service;
 
+import com.xinyan.sell.dto.CreateOrderDto;
 import com.xinyan.sell.dto.OrderDTO;
+import com.xinyan.sell.dto.OrderDetailDto;
 import org.springframework.data.domain.Page;
 
 /**
@@ -15,8 +17,9 @@ public interface OrderService {
      *创建订单
     *@author 李显君
     *@date 2018/11/19 16:42
+     * @param orderDTO
     */
-     OrderDTO createOrder(OrderDTO orderDTO);
+    CreateOrderDto createOrder(CreateOrderDto orderDTO);
     
     /**@program：订单（order）
      *订单列表
@@ -37,7 +40,7 @@ public interface OrderService {
     *@author 李显君
     *@date 2018/11/19 17:19
     */
-     OrderDTO cancelOrder(OrderDTO orderDTO);
+     boolean cancelOrder(String openid , String orderId);
     
     
     /**@program：订单（order）
@@ -54,4 +57,12 @@ public interface OrderService {
       * @Time: 10:34
       */
     OrderDTO findAll(OrderDTO orderDTO);
+
+    /**
+     * @Description: 买家获取订单详情信息
+     * @Author: 谢庆香
+     * @Date: 2018\11\20 0020
+     * @Time: 23:27
+     */ 
+    OrderDetailDto getOrderDetail(OrderDetailDto orderDetailDto);
 }

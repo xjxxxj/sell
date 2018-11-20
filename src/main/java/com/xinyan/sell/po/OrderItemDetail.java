@@ -1,5 +1,7 @@
 package com.xinyan.sell.po;
 
+import com.xinyan.sell.utils.UUIDUtil;
+
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import java.io.Serializable;
@@ -24,8 +26,8 @@ public class OrderItemDetail implements Serializable {
     private Integer productId;
     /**商品的名字*/
     private String productName;
-    /**商品的单价，单位：分*/
-    private Long productPrice;
+    /**商品的单价，单位：元*/
+    private Double productPrice;
     /**商品的数量，单位：件*/
     private Integer productQuantity;
     /**商品的小图标，在商品列表时使用*/
@@ -34,6 +36,15 @@ public class OrderItemDetail implements Serializable {
     private String productImage;
     /**订单项所属的订单id*/
     private String orderId ;
+
+    public OrderItemDetail(ProductInfo productInfo){
+        this.detailId = UUIDUtil.getCode32() ;
+        this.productId = productInfo.getId() ;
+        this.productName = productInfo.getName() ;
+        this.productPrice = productInfo.getPrice() ;
+        this.productIcon = this.getProductIcon() ;
+        this.productImage = this.productIcon ;
+    }
 
     public OrderItemDetail() {
     }
@@ -62,11 +73,11 @@ public class OrderItemDetail implements Serializable {
         this.productName = productName;
     }
 
-    public Long getProductPrice() {
-        return productPrice/100;
+    public Double getProductPrice() {
+        return productPrice.doubleValue()/100;
     }
 
-    public void setProductPrice(Long productPrice) {
+    public void setProductPrice(Double productPrice) {
         this.productPrice = productPrice;
     }
 

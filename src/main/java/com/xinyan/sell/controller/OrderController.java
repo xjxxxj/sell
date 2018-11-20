@@ -1,24 +1,20 @@
 package com.xinyan.sell.controller;
 
+import com.xinyan.sell.dto.CreateOrderDto;
 import com.xinyan.sell.dto.OrderDTO;
+import com.xinyan.sell.dto.OrderDetailDto;
 import com.xinyan.sell.form.CreateOrderForm;
 import com.xinyan.sell.form.OrderForm;
 import com.xinyan.sell.po.BuyerInfo;
-import com.xinyan.sell.po.Order;
 import com.xinyan.sell.service.BuyerService;
 import com.xinyan.sell.service.OrderService;
+import com.xinyan.sell.utils.ObjectUtils;
 import com.xinyan.sell.vo.ResultVo;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
-import org.springframework.http.HttpRequest;
-import org.springframework.http.server.ServletServerHttpRequest;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
-
-import javax.servlet.ServletRequest;
-import java.util.Enumeration;
 
 /**
  * @program: sell
@@ -32,16 +28,31 @@ public class OrderController {
     @Autowired
     private OrderService orderService ;
     @Autowired
-    private BuyerService userService ;
-    /**创建订单*/
+    private BuyerService buyerServiceService ;
+    /**
+     * @Description: 创建订单
+     * @Author: 谢庆香
+     * @Date: 2018\11\20 0020
+     * @Time: 20:09
+     */ 
     @PostMapping("/buyer/order/create")
     @ResponseBody
     public ResultVo create(CreateOrderForm createOrderForm){
-        System.out.println(createOrderForm) ;
-        System.out.println(createOrderForm.getItems()) ;
-        return ResultVo.ok() ;
+        //查看该用户是否存在
+        String openid = createOrderForm.getOpenid();
+        BuyerInfo buyerInfo = buyerServiceService.queryBuyerByOpenId(openid);
+        CreateOrderDto createOrderDto = null ;
+        if(ObjectUtils.isNotNull(buyerInfo)){
+            //将form对象封装为dto对象
+            createOrderDto = new CreateOrderDto(createOrderForm);
+            //调用创建订单服务
+            createOrderDto = orderService.createOrder(createOrderDto) ;
+            createOrderDto.setCreateOrderForm(null);
+        }else {
+            return ResultVo.error() ;
+        }
+        return ResultVo.ok(createOrderDto) ;
     }
-
 
     /**
      * @Description: 分页获取订单信息
@@ -59,6 +70,43 @@ public class OrderController {
         //调用service，分页查询订单信息
         orderDTO = orderService.findAll(orderDTO) ;
         return ResultVo.ok(orderDTO.getOrders()) ;
+    }
+    /**
+     * @Description: 查看订单详情
+     * @Author: 谢庆香
+     * @Date: 2018\11\20 0020
+     * @Time: 23:06
+     */ 
+    @GetMapping("/buyer/order/detail")
+    @ResponseBody
+    public ResultVo getOrderDetail(String openid , String orderId){
+        if(!ObjectUtils.isNotNull(openid,orderId)) {
+            return ResultVo.error() ;
+        }
+        OrderDetailDto orderDetailDto = new OrderDetailDto(orderId, orderId);
+        orderDetailDto = orderService.getOrderDetail(orderDetailDto) ;
+        return ResultVo.ok(orderDetailDto) ;
+    }
+
+    /**
+     * @Description: 取消订单
+     * @Author: 谢庆香
+     * @Date: 2018\11\21 0021
+     * @Time: 0:12
+     */
+    @PostMapping("/buyer/order/cancel")
+    @ResponseBody
+    public ResultVo cancel(String openid , String orderId){
+        if(!ObjectUtils.isNotNull(openid,orderId)) {
+            return ResultVo.error() ;
+        }
+        boolean result = orderService.cancelOrder(openid, orderId);
+        if(result){
+            return ResultVo.ok() ;
+        }else {
+            return ResultVo.error() ;
+        }
+
     }
 
 }

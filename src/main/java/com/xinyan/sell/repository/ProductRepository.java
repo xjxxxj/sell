@@ -12,5 +12,18 @@ import java.util.List;
  * @create: 2018-11-19 19:15
  **/
 public interface ProductRepository extends JpaRepository<ProductInfo,String> {
+    /**
+     * @Description: 根据类别id查询商品
+     * @Author: 谢庆香
+     * @Date: 2018\11\20 0020
+     * @Time: 20:43
+     */ 
     List<ProductInfo> findAllByCategoryType(int categoryType) ;
+    /**
+     * @Description: 批量查询商品
+     * @Author: 谢庆香
+     * @Date: 2018\11\20 0020
+     * @Time: 20:45
+     */ 
+    List<ProductInfo> findAllByIdIn(List<Integer> ids) ;
 }

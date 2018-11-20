@@ -6,7 +6,7 @@ package com.xinyan.sell.utils;
  * @author: 谢庆香
  * @create: 2018-11-16 16:31
  **/
-public class StringUtil {
+public class ObjectUtils {
 
     /**
      * @Description: 判断对个对象是否存在空对象
@@ -15,7 +15,7 @@ public class StringUtil {
      * @Date: 2018\11\16 0016
      * @Time: 17:06
      */
-    public boolean isNotNull(Object ... objects){
+    public static boolean isNotNull(Object ... objects){
         if(objects != null && objects.length > 0){
             for(int i = 0 ; i < objects.length ; i ++){
                 if(objects[0] == null){

@@ -1,7 +1,9 @@
 package com.xinyan.sell.po;
 
+import com.xinyan.sell.dto.CreateOrderDto;
 import com.xinyan.sell.enums.OrderStatus;
 import com.xinyan.sell.enums.PayStatus;
+import com.xinyan.sell.form.CreateOrderForm;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
@@ -25,8 +27,8 @@ public class Order implements Serializable {
     /**订单Id*/
     @Id
     private String orderId;
-    /**订单总金额，单位是分*/
-    private Long orderAmount;
+    /**订单总金额，单位是元，计算得出*/
+    private Double orderAmount;
     /**订单状态 ，0：订单已完成 ；1：未完成,默认未完成*/
     private int orderStatus = OrderStatus.FAILED.getCode();
     /**支付状态 ， 0：已支付 ；1：未支付，默认未支付*/
@@ -43,6 +45,20 @@ public class Order implements Serializable {
     private String buyerPhone ;
     /**买家地址*/
     private String buyerAddress ;
+
+    public Order(CreateOrderDto createOrderDto, List<OrderItemDetail> itemDetails){
+        this.orderId = createOrderDto.getOrderid() ;
+        this.orderAmount = 0.0 ;
+        for(OrderItemDetail orderItemDetail : itemDetails){
+            this.orderAmount += (orderItemDetail.getProductPrice() * orderItemDetail.getProductQuantity()) ;
+        }
+        this.createTime = new Date() ;
+        this.buyerOpenId = createOrderDto.getCreateOrderForm().getOpenid() ;
+        this.buyerName = createOrderDto.getCreateOrderForm().getName() ;
+        this.buyerPhone = createOrderDto.getCreateOrderForm().getPhone() ;
+        this.buyerAddress = createOrderDto.getCreateOrderForm().getAddress() ;
+
+    }
 
     public Order() {
     }
@@ -99,7 +115,7 @@ public class Order implements Serializable {
         return orderAmount.doubleValue()/100;
     }
 
-    public void setOrderAmount(Long orderAmount) {
+    public void setOrderAmount(Double orderAmount) {
         this.orderAmount = orderAmount;
     }
 
