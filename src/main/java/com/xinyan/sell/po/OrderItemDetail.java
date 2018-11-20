@@ -63,7 +63,7 @@ public class OrderItemDetail implements Serializable {
     }
 
     public Long getProductPrice() {
-        return productPrice;
+        return productPrice/100;
     }
 
     public void setProductPrice(Long productPrice) {

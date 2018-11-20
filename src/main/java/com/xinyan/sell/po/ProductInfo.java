@@ -84,8 +84,8 @@ public class ProductInfo implements Serializable {
         this.name = name;
     }
 
-    public Long getPrice() {
-        return price;
+    public Double getPrice() {
+        return price.doubleValue()/100;
     }
 
     public void setPrice(Long price) {

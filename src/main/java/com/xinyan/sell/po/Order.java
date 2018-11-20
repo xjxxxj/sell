@@ -38,7 +38,7 @@ public class Order implements Serializable {
     /**买家id*/
     private String buyerOpenId ;
     /**买家名字*/
-    private String buyername ;
+    private String buyerName ;
     /**买家电话*/
     private String buyerPhone ;
     /**买家地址*/
@@ -59,12 +59,12 @@ public class Order implements Serializable {
         this.buyerOpenId = buyerOpenId;
     }
 
-    public String getBuyername() {
-        return buyername;
+    public String getBuyerName() {
+        return buyerName;
     }
 
-    public void setBuyername(String buyername) {
-        this.buyername = buyername;
+    public void setBuyerName(String buyerName) {
+        this.buyerName = buyerName;
     }
 
     public String getBuyerPhone() {
@@ -95,8 +95,8 @@ public class Order implements Serializable {
         this.orderId = orderId;
     }
 
-    public Long getOrderAmount() {
-        return orderAmount;
+    public Double getOrderAmount() {
+        return orderAmount.doubleValue()/100;
     }
 
     public void setOrderAmount(Long orderAmount) {

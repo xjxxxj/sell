@@ -4,47 +4,24 @@ import java.io.Serializable;
 import java.util.List;
 
 /**
- * 封装创建订单参数
+ * 买家查询订单参数封装
  */
 public class OrderForm implements Serializable {
     private static final long serialVersionUID = 1731269387543124876L;
-    /**订单主人名字*/
-    private String name;
-    /**订单主人电话*/
-    private Integer phone;
-    /**订单主人地址*/
-    private String address;
-    /**订单主人的微信openID*/
-    private String openid;
-    /**封装集合对象items商品信息有多个对象*/
-    private List<ProductForm> items;
+    /**用户openid*/
+    private String openid ;
+    /**当前页码，默认为0*/
+    private int page = 0 ;
+    /**单页显示条数，默认10*/
+    private int size  = 10 ;
 
-    public static long getSerialVersionUID() {
-        return serialVersionUID;
+    public OrderForm(String openid, int page, int size) {
+        this.openid = openid;
+        this.page = page;
+        this.size = size;
     }
 
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public Integer getPhone() {
-        return phone;
-    }
-
-    public void setPhone(Integer phone) {
-        this.phone = phone;
-    }
-
-    public String getAddress() {
-        return address;
-    }
-
-    public void setAddress(String address) {
-        this.address = address;
+    public OrderForm() {
     }
 
     public String getOpenid() {
@@ -55,11 +32,19 @@ public class OrderForm implements Serializable {
         this.openid = openid;
     }
 
-    public List<ProductForm> getItems() {
-        return items;
+    public int getPage() {
+        return page;
     }
 
-    public void setItems(List<ProductForm> items) {
-        this.items = items;
+    public void setPage(int page) {
+        this.page = page;
+    }
+
+    public int getSize() {
+        return size;
+    }
+
+    public void setSize(int size) {
+        this.size = size;
     }
 }

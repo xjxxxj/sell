@@ -1,10 +1,13 @@
 package com.xinyan.sell.controller;
 
+import com.xinyan.sell.dto.ProductByCategoryDto;
 import com.xinyan.sell.service.ProductService;
 import com.xinyan.sell.vo.ResultVo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+
+import java.util.List;
 
 /**
  * @program: sell
@@ -26,9 +29,10 @@ public class ProductController {
      */
     @RequestMapping("/list")
     public ResultVo getProductList(){
-        //获取所有商品信息
-
-        return ResultVo.ok() ;
+        //分类别获取所有商品信息
+        List<ProductByCategoryDto> productsByCategory = productService.findAllWithCategory();
+        //封装返回
+        return ResultVo.ok(productsByCategory) ;
     }
 
 }

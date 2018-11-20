@@ -1,7 +1,12 @@
 package com.xinyan.sell.service.impl;
 
 import com.xinyan.sell.dto.OrderDTO;
+import com.xinyan.sell.po.Order;
+import com.xinyan.sell.repository.OrderRepository;
 import com.xinyan.sell.service.OrderService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Example;
+import org.springframework.data.domain.ExampleMatcher;
 import org.springframework.data.domain.Page;
 import org.springframework.stereotype.Service;
 
@@ -13,6 +18,9 @@ import org.springframework.stereotype.Service;
  **/
 @Service
 public class OrderServiceImpl implements OrderService {
+
+    @Autowired
+    private OrderRepository orderRepository ;
 
     /**@program：订单（order）
      *创建订单实现类
@@ -60,5 +68,19 @@ public class OrderServiceImpl implements OrderService {
     @Override
     public OrderDTO payOrder(OrderDTO orderDTO) {
         return null;
+    }
+    /** 
+      * @Description:分页查询某买家的订单信息
+      * @Param:  
+      * @return:  
+      * @Author: 谢庆香 
+      * @Date: 2018\11\20 0020 
+      * @Time: 11:31
+    */ 
+    @Override
+    public OrderDTO findAll(OrderDTO orderDTO) {
+        Page<Order> byBuyerOpenId = orderRepository.findAllByBuyerOpenIdOrderByCreateTimeDesc(orderDTO.getOpenid(), orderDTO.getPage());
+        orderDTO.setOrders(byBuyerOpenId.getContent());
+        return orderDTO;
     }
 }

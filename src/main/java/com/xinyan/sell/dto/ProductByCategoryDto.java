@@ -20,6 +20,14 @@ public class ProductByCategoryDto {
     /**该类别商品的信息*/
     private List<ProductInfo> foods ;
 
+    public ProductByCategoryDto(ProductCategory productCategory, List<ProductInfo> foods) {
+        this.productCategory = productCategory;
+        this.foods = foods;
+    }
+
+    public ProductByCategoryDto() {
+    }
+
     public String getName(){
         return this.productCategory.getName() ;
     }

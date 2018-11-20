@@ -1,104 +1,60 @@
 package com.xinyan.sell.dto;
 
-import com.xinyan.sell.enums.OrderStatus;
-import com.xinyan.sell.enums.PayStatus;
+import com.xinyan.sell.po.Order;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 
-import java.util.Date;
+import java.io.Serializable;
+import java.util.List;
+
 
 /**
  * @program：sell
  * @Auther:李显君
  * @Date: 2018/11/19 17 :46
  */
-public class OrderDTO {
-    /**订单id*/
-    private String orderId;
-    /**卖家名字*/
-    private String buyerName;
-    /**卖家电话*/
-    private String buyerPhone;
-    /**卖家地址*/
-    private String buyerAddress;
-    /**订单总金额*/
-    private Long orderAmount;
-    /**订单状态 ，0：订单已完成 ；1：未完成,默认未完成*/
-    private int orderStatus = OrderStatus.FAILED.getCode();
-    /**支付状态 ， 0：已支付 ；1：未支付，默认未支付*/
-    private int payStatus = PayStatus.WAIT.getCode();
-    /**订单创建时间*/
-    private Date createTime;
-    /**订单修改时间*/
-    private Date updateTime;
+public class OrderDTO implements Serializable {
+    private static final long serialVersionUID = 1254263340087283384L;
+    /**买家openid*/
+    private String openid ;
+    /**分页数据*/
+    private Pageable page ;
+    /**封装返回值*/
+    private List<Order> orders ;
 
-    public String getOrderId() {
-        return orderId;
+    public OrderDTO() {
     }
 
-    public void setOrderId(String orderId) {
-        this.orderId = orderId;
+    public static long getSerialVersionUID() {
+        return serialVersionUID;
     }
 
-    public String getBuyerName() {
-        return buyerName;
+    public List<Order> getOrders() {
+        return orders;
     }
 
-    public void setBuyerName(String buyerName) {
-        this.buyerName = buyerName;
+    public void setOrders(List<Order> orders) {
+        this.orders = orders;
     }
 
-    public String getBuyerPhone() {
-        return buyerPhone;
+    public OrderDTO(String openid, Pageable page) {
+        this.openid = openid;
+        this.page = page;
     }
 
-    public void setBuyerPhone(String buyerPhone) {
-        this.buyerPhone = buyerPhone;
+    public String getOpenid() {
+        return openid;
     }
 
-    public String getBuyerAddress() {
-        return buyerAddress;
+    public void setOpenid(String openid) {
+        this.openid = openid;
     }
 
-    public void setBuyerAddress(String buyerAddress) {
-        this.buyerAddress = buyerAddress;
+    public Pageable getPage() {
+        return page;
     }
 
-    public Long getOrderAmount() {
-        return orderAmount;
-    }
-
-    public void setOrderAmount(Long orderAmount) {
-        this.orderAmount = orderAmount;
-    }
-
-    public int getOrderStatus() {
-        return orderStatus;
-    }
-
-    public void setOrderStatus(int orderStatus) {
-        this.orderStatus = orderStatus;
-    }
-
-    public int getPayStatus() {
-        return payStatus;
-    }
-
-    public void setPayStatus(int payStatus) {
-        this.payStatus = payStatus;
-    }
-
-    public Date getCreateTime() {
-        return createTime;
-    }
-
-    public void setCreateTime(Date createTime) {
-        this.createTime = createTime;
-    }
-
-    public Date getUpdateTime() {
-        return updateTime;
-    }
-
-    public void setUpdateTime(Date updateTime) {
-        this.updateTime = updateTime;
+    public void setPage(Pageable page) {
+        this.page = page;
     }
 }

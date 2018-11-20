@@ -27,14 +27,14 @@ public interface ProductService {
     */
     ProductInfo findOne(String productId);
     /**
-    * @description 查询所有商品信息
+    * @description 分类获取所有商品信息
     * @author      Hp
     * @param
     * @return     List<ProductInfoVo>
     * @exception
     * @date        19/11/2018 14:49
     */
-    List<ProductByCategoryDto> findAll();
+    List<ProductByCategoryDto> findAllWithCategory();
     /**
     * @description  分页查询所有商品信息
     * @author      Hp

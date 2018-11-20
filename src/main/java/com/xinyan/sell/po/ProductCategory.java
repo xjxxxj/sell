@@ -1,5 +1,6 @@
 package com.xinyan.sell.po;
 
+import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -11,6 +12,7 @@ import java.io.Serializable;
  * @author: 谢庆香
  * @create: 2018-11-20 01:09
  **/
+@Entity(name = "tb_product_category")
 public class ProductCategory implements Serializable , Comparable {
     private static final long serialVersionUID = -1147074259207160347L;
     /**商品类别id*/
