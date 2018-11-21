@@ -46,7 +46,11 @@ public class OrderController {
             //将form对象封装为dto对象
             createOrderDto = new CreateOrderDto(createOrderForm);
             //调用创建订单服务
-            createOrderDto = orderService.createOrder(createOrderDto) ;
+            try {
+                createOrderDto = orderService.createOrder(createOrderDto) ;
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
             createOrderDto.setCreateOrderForm(null);
         }else {
             return ResultVo.error() ;
@@ -69,6 +73,10 @@ public class OrderController {
         OrderDTO orderDTO = new OrderDTO(openid, pageable);
         //调用service，分页查询订单信息
         orderDTO = orderService.findAll(orderDTO) ;
+        //订单为空
+        if(orderDTO.getOrders() == null || orderDTO.getOrders().size() ==0){
+            return ResultVo.ok("暂无订单信息") ;
+        }
         return ResultVo.ok(orderDTO.getOrders()) ;
     }
     /**
@@ -83,7 +91,7 @@ public class OrderController {
         if(!ObjectUtils.isNotNull(openid,orderId)) {
             return ResultVo.error() ;
         }
-        OrderDetailDto orderDetailDto = new OrderDetailDto(orderId, orderId);
+        OrderDetailDto orderDetailDto = new OrderDetailDto(orderId, openid);
         orderDetailDto = orderService.getOrderDetail(orderDetailDto) ;
         return ResultVo.ok(orderDetailDto) ;
     }

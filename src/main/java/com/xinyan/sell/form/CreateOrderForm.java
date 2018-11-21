@@ -1,10 +1,10 @@
 package com.xinyan.sell.form;
 
-import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.LinkedHashMap;
 import java.util.List;
 
 /**
@@ -23,7 +23,7 @@ public class CreateOrderForm {
     /**下单用户id*/
     private String openid ;
     /**订单项数据*/
-    private List<Item> items ;
+    private List<LinkedHashMap<String , Integer>> items ;
 
     public String getName() {
         return name;
@@ -57,7 +57,7 @@ public class CreateOrderForm {
         this.openid = openid;
     }
 
-    public List<Item> getItems() {
+    public List<LinkedHashMap<String, Integer>> getItems() {
         return items;
     }
 

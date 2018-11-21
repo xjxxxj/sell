@@ -42,8 +42,8 @@ public class OrderItemDetail implements Serializable {
         this.productId = productInfo.getId() ;
         this.productName = productInfo.getName() ;
         this.productPrice = productInfo.getPrice() ;
-        this.productIcon = this.getProductIcon() ;
-        this.productImage = this.productIcon ;
+        this.productIcon = productInfo.getIcon() ;
+        this.productImage = productInfo.getIcon() ;
     }
 
     public OrderItemDetail() {
@@ -74,7 +74,7 @@ public class OrderItemDetail implements Serializable {
     }
 
     public Double getProductPrice() {
-        return productPrice.doubleValue()/100;
+        return productPrice.doubleValue();
     }
 
     public void setProductPrice(Double productPrice) {

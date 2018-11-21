@@ -11,7 +11,7 @@
  Target Server Version : 50711
  File Encoding         : 65001
 
- Date: 21/11/2018 00:41:17
+ Date: 21/11/2018 10:41:37
 */
 
 SET NAMES utf8mb4;
@@ -56,8 +56,9 @@ CREATE TABLE `tb_order`  (
 -- ----------------------------
 -- Records of tb_order
 -- ----------------------------
-INSERT INTO `tb_order` VALUES ('2434', 432.00, 0, 0, '2018-11-20 15:14:35', '2018-11-05 14:17:44', 'xjiafjfdsaofjlsafj43214jl', 'xjx', '15626157232', '深圳');
-INSERT INTO `tb_order` VALUES ('3213', 1000.00, 0, 0, '2018-11-20 11:58:25', '2018-11-12 11:57:54', 'xjiafjfdsaofjlsafj43214jl', 'xjx', '15626157232', '深圳');
+INSERT INTO `tb_order` VALUES ('0d3d016a8fd84898a168280e9678a55c', 140.00, 1, 0, '2018-11-21 10:01:23', '2018-11-21 10:01:23', 'xjiafjfdsaofjlsafj43214jl', '彭', '13827328131', '资信达大厦');
+INSERT INTO `tb_order` VALUES ('ba07079d2a1e40b6b30d11257dca0ab5', 158.64, 1, 0, '2018-11-21 10:34:24', '2018-11-21 10:34:24', 'xjiafjfdsaofjlsafj43214jl', 'xjx', '13847836758', '金源商务大厦');
+INSERT INTO `tb_order` VALUES ('ed21ff5281414a898366df5b15eeff77', 148.76, 1, 0, '2018-11-21 09:56:25', '2018-11-21 09:56:25', 'xjiafjfdsaofjlsafj43214jl', '谢', '15626157232', '宝安');
 
 -- ----------------------------
 -- Table structure for tb_orderitem_detail
@@ -73,16 +74,19 @@ CREATE TABLE `tb_orderitem_detail`  (
   `productIcon` varchar(1000) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '订单项中商品的图标，商品列表时使用',
   `productImage` varchar(1000) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '订单项中商品的图片，商品详情时的图片',
   PRIMARY KEY (`detailId`) USING BTREE,
-  INDEX `FK_Reference_4`(`orderId`) USING BTREE,
-  CONSTRAINT `FK_Reference_4` FOREIGN KEY (`orderId`) REFERENCES `tb_order` (`orderId`) ON DELETE RESTRICT ON UPDATE RESTRICT
+  INDEX `FK_Reference_4`(`orderId`) USING BTREE
 ) ENGINE = InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = Compact;
 
 -- ----------------------------
 -- Records of tb_orderitem_detail
 -- ----------------------------
-INSERT INTO `tb_orderitem_detail` VALUES ('afdffsa', 1, '3213', '美食甜点', 10000.00, 2, 'https://ss0.bdstatic.com/70cFuHSh_Q1YnxGkpoWK1HF6hhy/it/u=607745733,2963223535&fm=26&gp=0.jpg', 'https://ss0.bdstatic.com/70cFuHSh_Q1YnxGkpoWK1HF6hhy/it/u=607745733,2963223535&fm=26&gp=0.jpg');
-INSERT INTO `tb_orderitem_detail` VALUES ('fasfdsaf', 3, '2434', '豉油皇煎鲈鱼球', 5423431.00, 1, 'http://pic30.photophoto.cn/20140318/0042040283347217_b.jpg', 'http://pic30.photophoto.cn/20140318/0042040283347217_b.jpg');
-INSERT INTO `tb_orderitem_detail` VALUES ('fdasfdsaf', 2, '3213', '草莓咕噜肉', 4332432.00, 3, 'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1543302233&di=208e8f0e323143978304ea435e78bd17&imgtype=jpg&er=1&src=http%3A%2F%2Fpic39.photophoto.cn%2F20160602%2F1155115768092069_b.jpg', 'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1543302233&di=208e8f0e323143978304ea435e78bd17&imgtype=jpg&er=1&src=http%3A%2F%2Fpic39.photophoto.cn%2F20160602%2F1155115768092069_b.jpg');
+INSERT INTO `tb_orderitem_detail` VALUES ('0b4460549351467c820be6644f95ce95', 2, '0d3d016a8fd84898a168280e9678a55c', '草莓咕噜肉', 43.00, 2, NULL, NULL);
+INSERT INTO `tb_orderitem_detail` VALUES ('417a6b14a1184e49a750669f1df130c8', 1, 'ba07079d2a1e40b6b30d11257dca0ab5', '美食甜点', 9.88, 1, 'https://ss0.bdstatic.com/70cFuHSh_Q1YnxGkpoWK1HF6hhy/it/u=607745733,2963223535&fm=26&gp=0.jpg', 'https://ss0.bdstatic.com/70cFuHSh_Q1YnxGkpoWK1HF6hhy/it/u=607745733,2963223535&fm=26&gp=0.jpg');
+INSERT INTO `tb_orderitem_detail` VALUES ('77eb9e3839d8433fb89072e18548087c', 4, 'ed21ff5281414a898366df5b15eeff77', '乌江鱼', 52.88, 2, NULL, NULL);
+INSERT INTO `tb_orderitem_detail` VALUES ('81b52815ff2c40c4aa1805a74c508d28', 2, 'ed21ff5281414a898366df5b15eeff77', '草莓咕噜肉', 43.00, 1, NULL, NULL);
+INSERT INTO `tb_orderitem_detail` VALUES ('a9844edad8e14162ac2573425dca02f8', 2, 'ba07079d2a1e40b6b30d11257dca0ab5', '草莓咕噜肉', 43.00, 1, 'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1543302233&di=208e8f0e323143978304ea435e78bd17&imgtype=jpg&er=1&src=http%3A%2F%2Fpic39.photophoto.cn%2F20160602%2F1155115768092069_b.jpg', 'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1543302233&di=208e8f0e323143978304ea435e78bd17&imgtype=jpg&er=1&src=http%3A%2F%2Fpic39.photophoto.cn%2F20160602%2F1155115768092069_b.jpg');
+INSERT INTO `tb_orderitem_detail` VALUES ('aeffb37883d5461692da07b7943c69a9', 4, 'ba07079d2a1e40b6b30d11257dca0ab5', '乌江鱼', 52.88, 2, 'http://pic28.photophoto.cn/20130916/0042040205226046_b.jpg', 'http://pic28.photophoto.cn/20130916/0042040205226046_b.jpg');
+INSERT INTO `tb_orderitem_detail` VALUES ('fae152eb31ac4f649a2a987456827f5b', 3, '0d3d016a8fd84898a168280e9678a55c', '豉油皇煎鲈鱼球', 54.00, 1, NULL, NULL);
 
 -- ----------------------------
 -- Table structure for tb_product_category
@@ -121,9 +125,9 @@ CREATE TABLE `tb_product_info`  (
 -- ----------------------------
 -- Records of tb_product_info
 -- ----------------------------
-INSERT INTO `tb_product_info` VALUES (1, '美食甜点', 10000.00, '好吃，', 'https://ss0.bdstatic.com/70cFuHSh_Q1YnxGkpoWK1HF6hhy/it/u=607745733,2963223535&fm=26&gp=0.jpg', '3', 0);
-INSERT INTO `tb_product_info` VALUES (2, '草莓咕噜肉', 43324.00, '广东菜 粤菜 香港菜 特色菜 精美菜肴', 'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1543302233&di=208e8f0e323143978304ea435e78bd17&imgtype=jpg&er=1&src=http%3A%2F%2Fpic39.photophoto.cn%2F20160602%2F1155115768092069_b.jpg', '1', 0);
-INSERT INTO `tb_product_info` VALUES (3, '豉油皇煎鲈鱼球', 54234.00, '精美菜肴 传统美食', 'http://pic30.photophoto.cn/20140318/0042040283347217_b.jpg', '1', 0);
-INSERT INTO `tb_product_info` VALUES (4, '乌江鱼', 52432.00, '特色餐饮 餐饮美食', 'http://pic28.photophoto.cn/20130916/0042040205226046_b.jpg', '2', 0);
+INSERT INTO `tb_product_info` VALUES (1, '美食甜点', 9.88, '好吃，', 'https://ss0.bdstatic.com/70cFuHSh_Q1YnxGkpoWK1HF6hhy/it/u=607745733,2963223535&fm=26&gp=0.jpg', '3', 0);
+INSERT INTO `tb_product_info` VALUES (2, '草莓咕噜肉', 43.00, '广东菜 粤菜 香港菜 特色菜 精美菜肴', 'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1543302233&di=208e8f0e323143978304ea435e78bd17&imgtype=jpg&er=1&src=http%3A%2F%2Fpic39.photophoto.cn%2F20160602%2F1155115768092069_b.jpg', '1', 0);
+INSERT INTO `tb_product_info` VALUES (3, '豉油皇煎鲈鱼球', 54.00, '精美菜肴 传统美食', 'http://pic30.photophoto.cn/20140318/0042040283347217_b.jpg', '1', 0);
+INSERT INTO `tb_product_info` VALUES (4, '乌江鱼', 52.88, '特色餐饮 餐饮美食', 'http://pic28.photophoto.cn/20130916/0042040205226046_b.jpg', '2', 0);
 
 SET FOREIGN_KEY_CHECKS = 1;

@@ -4,7 +4,6 @@ import com.xinyan.sell.dto.CreateOrderDto;
 import com.xinyan.sell.dto.OrderDTO;
 import com.xinyan.sell.dto.OrderDetailDto;
 import com.xinyan.sell.exception.ProductNotExitException;
-import com.xinyan.sell.form.Item;
 import com.xinyan.sell.po.Order;
 import com.xinyan.sell.po.OrderItemDetail;
 import com.xinyan.sell.po.ProductInfo;
@@ -19,6 +18,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.ArrayList;
+import java.util.LinkedHashMap;
 import java.util.List;
 
 /**
@@ -46,14 +46,14 @@ public class OrderServiceImpl implements OrderService {
     @Override
     @Transactional
     public CreateOrderDto createOrder(CreateOrderDto createOrderDto) {
-        List<Item> items = createOrderDto.getCreateOrderForm().getItems();
+        List<LinkedHashMap<String, Integer>> items = createOrderDto.getCreateOrderForm().getItems();
         //存储订单中所有商品的id
         List<Integer> productInfoIds = new ArrayList<>() ;
-        for(Item item : items){
+        for(int i = 0 ; i < items.size() ; i ++){
             //将商品id存在list集合中
-            productInfoIds.add(item.getProductId()) ;
+            productInfoIds.add(items.get(i).get("productId"))  ;
         }
-        //存储订单中商品相关信息
+        //查找订单中商品相关信息
         List<ProductInfo> productInfos = productRepository.findAllByIdIn(productInfoIds) ;
 
         if(items.size() != productInfos.size()){
@@ -65,15 +65,15 @@ public class OrderServiceImpl implements OrderService {
         for(int i = 0 ; i < productInfos.size() ; i ++){
             OrderItemDetail orderItemDetail = new OrderItemDetail(productInfos.get(i));
             orderItemDetail.setOrderId(createOrderDto.getOrderid());
-            orderItemDetail.setProductQuantity(items.get(i).getProductQuantity());
+            orderItemDetail.setProductQuantity(items.get(i).get("productQuantity"));
             orderItemDetails.add(orderItemDetail) ;
         }
-        //批量存储订单项数据
-        itemDetailRepository.save(orderItemDetails) ;
         //创建订单pojo
         Order order = new Order(createOrderDto, orderItemDetails);
         //存储订单数据
         orderRepository.save(order) ;
+        //批量存储订单项数据
+        itemDetailRepository.save(orderItemDetails) ;
         return createOrderDto;
     }
 
@@ -108,6 +108,17 @@ public class OrderServiceImpl implements OrderService {
         if(!openid.equals(order.getBuyerOpenId())){
             return false ;
         }
+        //如果订单已完成
+        if(order.getOrderStatus() == 0){
+            return false ;
+        }
+        //如果订单未完成，已付款
+        if(order.getPayStatus() == 0){
+            //通知商家审核取消订单请求
+            //商家同意后删除订单项及订单
+            //退款
+        }
+        //订单未付款
         //删除该订单的订单项
         itemDetailRepository.deleteByOrderId(orderId) ;
         //删除该订单
@@ -152,7 +163,7 @@ public class OrderServiceImpl implements OrderService {
         Order order = orderRepository.findOne(orderDetailDto.getOrderId());
         //判断该订单是否属于此用户
         if(order != null && order.getBuyerOpenId().equals(orderDetailDto.getBuyerOpenid())){
-            BeanUtils.copyProperties(order,order);
+            BeanUtils.copyProperties(order,orderDetailDto);
             //根据订单id查订单项
             List<OrderItemDetail> items = itemDetailRepository.findAllByOrderId(orderDetailDto.getOrderId());
             //将订单详情集合封装到dto对象中
