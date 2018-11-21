@@ -11,7 +11,7 @@
  Target Server Version : 50711
  File Encoding         : 65001
 
- Date: 21/11/2018 10:41:37
+ Date: 21/11/2018 22:41:23
 */
 
 SET NAMES utf8mb4;
@@ -42,8 +42,8 @@ DROP TABLE IF EXISTS `tb_order`;
 CREATE TABLE `tb_order`  (
   `orderId` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL COMMENT '订单id，订单的唯一标识',
   `orderAmount` double(15, 2) NULL DEFAULT NULL COMMENT '订单总金额，单位元',
-  `orderStatus` int(11) NULL DEFAULT NULL COMMENT '订单状态，0：已完成，1：未完成',
-  `payStatus` int(11) NULL DEFAULT NULL COMMENT '支付状态，0：已支付，0：未支付',
+  `orderStatus` int(11) NULL DEFAULT NULL COMMENT '订单状态，1：已完成，0：未完成',
+  `payStatus` int(11) NULL DEFAULT NULL COMMENT '支付状态，1：已支付，0：未支付',
   `createTime` timestamp(0) NULL DEFAULT NULL COMMENT '创建时间',
   `updateTime` timestamp(0) NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '修改时间',
   `buyerOpenId` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '买家id',
@@ -56,9 +56,9 @@ CREATE TABLE `tb_order`  (
 -- ----------------------------
 -- Records of tb_order
 -- ----------------------------
-INSERT INTO `tb_order` VALUES ('0d3d016a8fd84898a168280e9678a55c', 140.00, 1, 0, '2018-11-21 10:01:23', '2018-11-21 10:01:23', 'xjiafjfdsaofjlsafj43214jl', '彭', '13827328131', '资信达大厦');
-INSERT INTO `tb_order` VALUES ('ba07079d2a1e40b6b30d11257dca0ab5', 158.64, 1, 0, '2018-11-21 10:34:24', '2018-11-21 10:34:24', 'xjiafjfdsaofjlsafj43214jl', 'xjx', '13847836758', '金源商务大厦');
-INSERT INTO `tb_order` VALUES ('ed21ff5281414a898366df5b15eeff77', 148.76, 1, 0, '2018-11-21 09:56:25', '2018-11-21 09:56:25', 'xjiafjfdsaofjlsafj43214jl', '谢', '15626157232', '宝安');
+INSERT INTO `tb_order` VALUES ('0d3d016a8fd84898a168280e9678a55c', 140.00, 0, 0, '2018-11-21 10:01:23', '2018-11-21 10:01:23', 'xjiafjfdsaofjlsafj43214jl', '彭', '13827328131', '资信达大厦');
+INSERT INTO `tb_order` VALUES ('ba07079d2a1e40b6b30d11257dca0ab5', 158.64, 1, 1, '2018-11-21 10:34:24', '2018-11-21 10:34:24', 'xjiafjfdsaofjlsafj43214jl', 'xjx', '13847836758', '金源商务大厦');
+INSERT INTO `tb_order` VALUES ('ed21ff5281414a898366df5b15eeff77', 148.76, 0, 1, '2018-11-21 09:56:25', '2018-11-21 09:56:25', 'xjiafjfdsaofjlsafj43214jl', '谢', '15626157232', '宝安');
 
 -- ----------------------------
 -- Table structure for tb_orderitem_detail
