@@ -3,7 +3,7 @@ package com.xinyan.sell.service.impl;
 import com.xinyan.sell.dto.CreateOrderDto;
 import com.xinyan.sell.dto.OrderDTO;
 import com.xinyan.sell.dto.OrderDetailDto;
-import com.xinyan.sell.exception.ProductNotExitException;
+import com.xinyan.sell.exception.ProductException;
 import com.xinyan.sell.po.Order;
 import com.xinyan.sell.po.OrderItemDetail;
 import com.xinyan.sell.po.ProductInfo;
@@ -11,11 +11,11 @@ import com.xinyan.sell.repository.OrderItemDetailRepository;
 import com.xinyan.sell.repository.OrderRepository;
 import com.xinyan.sell.repository.ProductRepository;
 import com.xinyan.sell.service.OrderService;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
-import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -30,6 +30,7 @@ import java.util.List;
  * @create: 2018-11-19 11:45
  **/
 @Service
+@Slf4j
 public class OrderServiceImpl implements OrderService {
 
     @Autowired
@@ -47,7 +48,8 @@ public class OrderServiceImpl implements OrderService {
     */ 
     @Override
     @Transactional
-    public CreateOrderDto createOrder(CreateOrderDto createOrderDto) {
+    public CreateOrderDto createOrder(CreateOrderDto createOrderDto) throws ProductException{
+        log.info("用户：" + createOrderDto.getCreateOrderForm().getOpenid() + "请求创建订单,订单号为" + createOrderDto.getOrderid());
         List<LinkedHashMap<String, Integer>> items = createOrderDto.getCreateOrderForm().getItems();
         //存储订单中所有商品的id
         List<Integer> productInfoIds = new ArrayList<>() ;
@@ -59,7 +61,7 @@ public class OrderServiceImpl implements OrderService {
         List<ProductInfo> productInfos = productRepository.findAllByIdIn(productInfoIds) ;
 
         if(items.size() != productInfos.size()){
-            throw new ProductNotExitException("商品不存在") ;
+            throw new ProductException("商品不存在") ;
         }
         //用list集合存储所有的订单项信息
         List<OrderItemDetail> orderItemDetails = new ArrayList<>() ;
@@ -76,6 +78,7 @@ public class OrderServiceImpl implements OrderService {
         orderRepository.save(order) ;
         //批量存储订单项数据
         itemDetailRepository.save(orderItemDetails) ;
+        log.info("用户：" + createOrderDto.getCreateOrderForm().getOpenid() + "订单成功,订单号为" + createOrderDto.getOrderid());
         //提醒商家收到新订单
 
 
@@ -84,30 +87,13 @@ public class OrderServiceImpl implements OrderService {
     }
 
     /**@program：订单（order）
-     *订单列表实现类
-     *@author 李显君
-     *@date 2018/11/19 16:53
-     */
-    @Override
-    public Page<OrderDTO> findList(OrderDTO orderDTO) {
-        return null;
-    }
-    /**@program：订单（order）
-     *查询订单实现类
-     *@author 李显君
-     *@date 2018/11/19 17:16
-     */
-    @Override
-    public OrderDTO findOrderById(String orderId) {
-        return null;
-    }
-    /**@program：订单（order）
      *取消订单实现类
      *@author 李显君
      *@date 2018/11/19 17:16
      */
     @Override
     public boolean cancelOrder(String openid , String orderId) {
+        log.info("用户：" + openid + "请求取消订单,订单号为" + orderId);
         //根据orderId获取订单
         Order order = orderRepository.findOne(orderId);
         //判断该订单是否属于该人
@@ -129,17 +115,10 @@ public class OrderServiceImpl implements OrderService {
         itemDetailRepository.deleteByOrderId(orderId) ;
         //删除该订单
         orderRepository.delete(orderId);
+        log.info("用户：" + openid + "成功取消订单,订单号为" + orderId);
         return true;
     }
-    /**@program：订单（order）
-     *支付订单实现类
-     *@author 李显君
-     *@date 2018/11/19 17:16
-     */
-    @Override
-    public OrderDTO payOrder(OrderDTO orderDTO) {
-        return null;
-    }
+
     /** 
       * @Description:分页查询某买家的订单信息
       * @Param:  
@@ -195,7 +174,6 @@ public class OrderServiceImpl implements OrderService {
      * @Date: 2018\11\21 0021
      * @Time: 20:49
      */
-
     @Override
     public OrderDetailDto findAll(String orderId) {
         OrderDetailDto orderDetailDto = new OrderDetailDto(orderId);

@@ -3,6 +3,7 @@ package com.xinyan.sell.controller;
 import com.xinyan.sell.dto.CreateOrderDto;
 import com.xinyan.sell.dto.OrderDTO;
 import com.xinyan.sell.dto.OrderDetailDto;
+import com.xinyan.sell.exception.OrderException;
 import com.xinyan.sell.form.CreateOrderForm;
 import com.xinyan.sell.form.OrderForm;
 import com.xinyan.sell.po.BuyerInfo;
@@ -20,8 +21,6 @@ import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
-
-import java.util.List;
 
 
 /**
@@ -64,7 +63,7 @@ public class OrderController {
      */ 
     @PostMapping("/buyer/order/create")
     @ResponseBody
-    public ResultVo create(CreateOrderForm createOrderForm){
+    public ResultVo create(CreateOrderForm createOrderForm) throws OrderException {
         //查看该用户是否存在
         String openid = createOrderForm.getOpenid();
         BuyerInfo buyerInfo = buyerServiceService.queryBuyerByOpenId(openid);
@@ -76,7 +75,7 @@ public class OrderController {
             try {
                 createOrderDto = orderService.createOrder(createOrderDto) ;
             } catch (Exception e) {
-                e.printStackTrace();
+                throw new OrderException("添加订单异常") ;
             }
             createOrderDto.setCreateOrderForm(null);
         }else {
@@ -114,12 +113,15 @@ public class OrderController {
      */ 
     @GetMapping("/buyer/order/detail")
     @ResponseBody
-    public ResultVo getOrderDetail(String openid , String orderId){
+    public ResultVo getOrderDetail(String openid , String orderId) throws OrderException {
         if(!ObjectUtils.isNotNull(openid,orderId)) {
             return ResultVo.error() ;
         }
         OrderDetailDto orderDetailDto = new OrderDetailDto(orderId, openid);
         orderDetailDto = orderService.getOrderDetail(orderDetailDto) ;
+        if(orderDetailDto == null){
+            throw new OrderException("用户" + openid + "查询编号为" + orderId + "的订单失败") ;
+        }
         return ResultVo.ok(orderDetailDto) ;
     }
     /**
