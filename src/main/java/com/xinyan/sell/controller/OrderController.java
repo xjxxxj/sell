@@ -6,15 +6,23 @@ import com.xinyan.sell.dto.OrderDetailDto;
 import com.xinyan.sell.form.CreateOrderForm;
 import com.xinyan.sell.form.OrderForm;
 import com.xinyan.sell.po.BuyerInfo;
+import com.xinyan.sell.po.Order;
+import com.xinyan.sell.po.OrderItemDetail;
 import com.xinyan.sell.service.BuyerService;
 import com.xinyan.sell.service.OrderService;
 import com.xinyan.sell.utils.ObjectUtils;
 import com.xinyan.sell.vo.ResultVo;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.ModelAndView;
+
+import java.util.List;
+
 
 /**
  * @program: sell
@@ -29,6 +37,25 @@ public class OrderController {
     private OrderService orderService ;
     @Autowired
     private BuyerService buyerServiceService ;
+
+    /**
+     * @Description: 后台分页获取订单信息
+     * @Author: 谢庆香
+     * @Date: 2018\11\21 0021
+     * @Time: 21:49
+     */ 
+    @GetMapping("/seller/order/list")
+    private ModelAndView getOrderListWithPage
+            (@RequestParam(value = "page" , required = false , defaultValue = "0") int page
+            ,@RequestParam(value = "size" , required = false , defaultValue = "1") int size){
+
+        //创建分页对象
+        PageRequest pageable = new PageRequest(page, size,new Sort(Sort.Direction.DESC,"updateTime"));
+        //分页查询所有的订单
+        Page<Order> orderPage = orderService.findAll(pageable);
+        return new ModelAndView("/order/list" , "page" , orderPage) ;
+    }
+
     /**
      * @Description: 创建订单
      * @Author: 谢庆香
@@ -94,6 +121,21 @@ public class OrderController {
         OrderDetailDto orderDetailDto = new OrderDetailDto(orderId, openid);
         orderDetailDto = orderService.getOrderDetail(orderDetailDto) ;
         return ResultVo.ok(orderDetailDto) ;
+    }
+    /**
+     * @Description: 后台查看订单详情
+     * @Author: 谢庆香
+     * @Date: 2018\11\20 0020
+     * @Time: 23:06
+     */
+    @GetMapping("/seller/order/detail")
+    public ModelAndView getOrderDetail(String orderId){
+        if(!ObjectUtils.isNotNull(orderId)) {
+            return new ModelAndView("/common/error" , "msg" , "无此订单") ;
+        }
+        OrderDetailDto orderDetailDto = orderService.findAll(orderId) ;
+        System.out.println(orderDetailDto.getOrderStatus()) ;
+        return new ModelAndView("/order/detail" , "orderDetailDto",orderDetailDto) ;
     }
 
     /**

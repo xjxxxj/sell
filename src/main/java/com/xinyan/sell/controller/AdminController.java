@@ -14,13 +14,15 @@ import org.springframework.web.servlet.ModelAndView;
 @Controller
 @RequestMapping("/admin")
 public class AdminController {
+    /**
+     * @Description: 去订单列表页面
+     * @Author: 谢庆香
+     * @Date: 2018\11\21 0021
+     * @Time: 19:26
+     */ 
     @RequestMapping("order/list")
-    public ModelAndView toList(Model model){
-
-        model.addAttribute("msg" , "失败") ;
-        model.addAttribute("products" , "dfsdsfa") ;
-
-        return new ModelAndView("/common/error" , "abc" , model) ;
+    public String toList(Model model){
+        return "order/list" ;
 
     }
 

@@ -46,6 +46,10 @@ public class OrderDetailDto implements Serializable {
     public OrderDetailDto() {
     }
 
+    public OrderDetailDto(String orderId) {
+        this.orderId = orderId ;
+    }
+
     public String getOrderId() {
         return orderId;
     }

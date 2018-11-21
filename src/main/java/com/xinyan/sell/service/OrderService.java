@@ -3,7 +3,12 @@ package com.xinyan.sell.service;
 import com.xinyan.sell.dto.CreateOrderDto;
 import com.xinyan.sell.dto.OrderDTO;
 import com.xinyan.sell.dto.OrderDetailDto;
+import com.xinyan.sell.po.Order;
+import com.xinyan.sell.po.OrderItemDetail;
 import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+
+import java.util.List;
 
 /**
  * @Description: 订单服务接口
@@ -65,4 +70,20 @@ public interface OrderService {
      * @Time: 23:27
      */ 
     OrderDetailDto getOrderDetail(OrderDetailDto orderDetailDto);
+
+    /**
+     * @Description: 后台分页获取用户信息
+     * @Author: 谢庆香
+     * @Date: 2018\11\21 0021
+     * @Time: 19:37
+     */
+    Page<Order> findAll(PageRequest page);
+
+    /**
+     * @Description: 根据订单id查询订单
+     * @Author: 谢庆香
+     * @Date: 2018\11\21 0021
+     * @Time: 20:49
+     */
+    OrderDetailDto findAll(String orderId);
 }

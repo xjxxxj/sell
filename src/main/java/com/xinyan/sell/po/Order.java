@@ -29,9 +29,9 @@ public class Order implements Serializable {
     private String orderId;
     /**订单总金额，单位是元，计算得出*/
     private Double orderAmount;
-    /**订单状态 ，0：订单已完成 ；1：未完成,默认未完成*/
+    /**订单状态 ，1：订单已完成 ；9：未完成,默认未完成*/
     private int orderStatus = OrderStatus.FAILED.getCode();
-    /**支付状态 ， 0：已支付 ；1：未支付，默认未支付*/
+    /**支付状态 ， 1：已支付 ；0：未支付，默认未支付*/
     private int payStatus = PayStatus.WAIT.getCode();
     /**订单创建时间*/
     private Date createTime;
@@ -112,7 +112,7 @@ public class Order implements Serializable {
     }
 
     public Double getOrderAmount() {
-        return orderAmount.doubleValue()/100;
+        return orderAmount.doubleValue();
     }
 
     public void setOrderAmount(Double orderAmount) {

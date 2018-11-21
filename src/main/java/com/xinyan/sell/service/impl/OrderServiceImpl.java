@@ -14,6 +14,8 @@ import com.xinyan.sell.service.OrderService;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -74,6 +76,10 @@ public class OrderServiceImpl implements OrderService {
         orderRepository.save(order) ;
         //批量存储订单项数据
         itemDetailRepository.save(orderItemDetails) ;
+        //提醒商家收到新订单
+
+
+
         return createOrderDto;
     }
 
@@ -172,4 +178,39 @@ public class OrderServiceImpl implements OrderService {
         }
         return null;
     }
+
+    /**
+     * @Description:后台分页获取订单
+     * @Author: 谢庆香
+     * @Date: 2018\11\21 0021
+     * @Time: 19:37
+     */ 
+    @Override
+    public Page<Order> findAll(PageRequest page) {
+        return orderRepository.findAll(page) ;
+    }
+    /**
+     * @Description: 后台查看订单详情
+     * @Author: 谢庆香
+     * @Date: 2018\11\21 0021
+     * @Time: 20:49
+     */
+
+    @Override
+    public OrderDetailDto findAll(String orderId) {
+        OrderDetailDto orderDetailDto = new OrderDetailDto(orderId);
+        //根据orderId查询订单基本信息
+        Order order = orderRepository.findOne(orderId);
+        if(order != null){
+            BeanUtils.copyProperties(order,orderDetailDto);
+            //根据订单id查订单项
+            List<OrderItemDetail> items = itemDetailRepository.findAllByOrderId(orderDetailDto.getOrderId());
+            //将订单详情集合封装到dto对象中
+            orderDetailDto.setOrderDetailList(items);
+            return orderDetailDto ;
+        }
+        return null;
+    }
+
+
 }

@@ -14,8 +14,8 @@ import java.io.Serializable;
  * @Version:
  */
 public enum PayStatus implements Serializable {
-    WAIT(0, "未支付"),
-    FINISHED(1, "已支付");
+    WAIT(1, "未支付"),
+    FINISHED(0, "已支付");
 
     /**
      * 支付状态码
